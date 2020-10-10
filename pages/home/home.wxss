@@ -1,0 +1,111 @@
+.top-container {
+  display: flex;
+  flex-direction: column;
+  border-bottom-right-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
+  background-color: #8CC7b5;
+  color: white;
+}
+
+.title-container {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  /* margin: 0 0 20rpx 20rpx; */
+  font-weight: bold;
+  font-size: 36rpx;
+  margin-left: 20rpx;
+}
+
+.amount-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 50rpx;
+}
+
+.shouru-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100rpx;
+  margin-left: 40rpx;
+}
+
+.amount-text {
+  font-size: 76rpx;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+}
+
+.zhichu-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100rpx;
+  margin-right: 40rpx;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 80rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  margin-top: 40rpx;
+}
+
+.item-date {
+  font-size: 32rpx;
+  color: #191919;
+}
+
+.item-amount {
+  font-size: 28rpx;
+  color: #bbbbbb;
+}
+
+.item-image {
+  width: 70rpx;
+  height: 70rpx;
+  margin-left: 30rpx;
+}
+
+.shop-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 40rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  box-shadow: 0px 0px 10px 1px rgba(238, 238, 238, 100);
+}
+
+.shop-item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 140rpx;
+}
+
+.item-title {
+  color: #333333;
+  margin-left: 20rpx;
+}
+
+
+.amount {
+  color: #48A17B;
+  margin-left: 380rpx;
+}
+
+.line{
+  width: 100%;
+  height: 1px;
+  background-color: #eeeeee;
+}

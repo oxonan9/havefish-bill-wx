@@ -1,0 +1,48 @@
+{
+  "usingComponents": {
+    "l-avatar": "/miniprogram_npm/lin-ui/avatar/index",
+    "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "v-nav": "/components/nav/index"
+  },
+  "pages": [
+    "pages/home/home",
+    "pages/welcome/welcome",
+    "pages/mine/mine",
+    "pages/do/do",
+    "pages/statistics/statistics"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "backgroundColor": "#75ba95"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#bbbbbb",
+    "selectedColor": "#333333",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_hl.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "记账",
+        "iconPath": "/images/add_hl.png",
+        "selectedIconPath": "/images/add_hl.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/images/my.png",
+        "selectedIconPath": "/images/my_hl.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap85.json"
+}
