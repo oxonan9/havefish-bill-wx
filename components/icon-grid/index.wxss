@@ -1,0 +1,19 @@
+.container {}
+
+.haha {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-class {}
+
+text {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #333333;
+}

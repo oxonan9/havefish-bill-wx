@@ -4,14 +4,20 @@
     "l-list": "/miniprogram_npm/lin-ui/list/index",
     "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
     "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index",
-    "v-nav": "/components/nav/index"
+    "l-capsule-bar": "/miniprogram_npm/lin-ui/capsule-bar/index",
+    "l-popup": "/miniprogram_npm/lin-ui/popup/index",
+    "l-grid": "/miniprogram_npm/lin-ui/grid/index",
+    "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "l-input":"/miniprogram_npm/lin-ui/input/index"
   },
   "pages": [
+    "pages/do/do",
     "pages/home/home",
     "pages/welcome/welcome",
     "pages/mine/mine",
-    "pages/do/do",
-    "pages/statistics/statistics"
+    "pages/tally/tally"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
@@ -19,7 +25,5 @@
     "navigationStyle": "custom",
     "backgroundColor": "#ffffff"
   },
-  
-  "style": "v2",
   "sitemapLocation": "sitemap85.json"
 }

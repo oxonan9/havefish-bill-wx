@@ -1,0 +1,31 @@
+/* pages/tally/tally.wxss */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 88rpx;
+}
+
+.tab-content {
+  width: 100%;
+  border-bottom: 0px !important;
+}
+
+.arrow {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 40rpx;
+  border: 1px #e6e6e6 solid;
+  padding: 20rpx;
+  border-radius: 50%;
+}
+
+.tabs {
+  width: 500rpx;
+  margin: 0 auto;
+}

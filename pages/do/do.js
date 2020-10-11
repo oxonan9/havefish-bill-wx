@@ -7,22 +7,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    date: "2019-09"
   },
 
+  onGoTally() {
+    wx.redirectTo({
+      url: '/pages/tally/tally',
+    })
+  },
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
-    let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
-    let ratio = 750 / windowWidth;
-
+    var mDate = new Date();
     this.setData({
-      scroll_height: (windowHeight - 100) * ratio
-    })
-    this.setData({
-      dataList
+      dataList,
+      date: mDate.getFullYear() + "-" + mDate.getMonth()
     })
   },
 

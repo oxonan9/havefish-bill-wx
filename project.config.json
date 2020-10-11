@@ -90,6 +90,13 @@
 					"id": -1,
 					"name": "pages/welcome/welcome",
 					"pathName": "pages/welcome/welcome",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/tally/tally",
+					"pathName": "pages/tally/tally",
 					"scene": null
 				}
 			]

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "account-item": "/components/account-item/index"
+  }
+}

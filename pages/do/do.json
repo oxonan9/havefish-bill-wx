@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "coolui-scroll": "coolui-scroller/index"
+    "v-nav": "/components/nav/index",
+    "account":"/components/account/index"
   },
   "disableScroll": true
 

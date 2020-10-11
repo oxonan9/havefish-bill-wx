@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.item-image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.item-title {
+  margin-left: 40rpx;
+}
+
+.item-amount {
+  position: absolute;
+  right: 40rpx;
+  color: #16A83B;
+  font-weight: bold;
+}

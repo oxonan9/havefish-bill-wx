@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+}
+
+.date {
+  font-size: 28rpx;
+  margin-bottom: 0rpx;
+  color: #bbbbbb;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 30rpx;
+}

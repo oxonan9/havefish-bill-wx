@@ -1,0 +1,7 @@
+<view class="container">
+	<text class="date">今天，星期日 支出：-437.00，收入：+410.00</text>
+	<view class="item-container" wx:for="{{data.list}}" wx:key="index">
+		<account-item data="{{item}}" />
+	</view>
+
+</view>

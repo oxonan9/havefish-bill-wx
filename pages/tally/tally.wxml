@@ -1,0 +1,22 @@
+<v-nav />
+<view class="wrapper">
+
+	<!-- <view class="header">
+    <image bind:tap="onGoHome" class="arrow" src="/images/go_home.png"></image>
+	</view> -->
+	<l-tabs l-class-header="tabs" animated animated-for-line bind:linchange="changeTabs">
+		<l-tabpanel tab="支出" key="one" slot="one">
+			<view class="tab-content">
+				<icon-grid />
+			</view>
+		</l-tabpanel>
+		<l-tabpanel tab="收入" key="two" slot="two">
+			<view class="tab-content">收入</view>
+		</l-tabpanel>
+	</l-tabs>
+
+	<l-input hide-label placeholder="备注..."  showRow="{{false}}"/>
+
+
+
+</view>

@@ -1,0 +1,5 @@
+<view class="container">
+	<image class="item-image" src="/images/naicha.png"></image>
+	<text class="item-title">{{data.title}}</text>
+	<text class="item-amount">-{{data.amount}}</text>
+</view>

@@ -1,4 +1,4 @@
-// pages/statistics/statistics.js
+// pages/tally/tally.js
 Page({
 
   /**
@@ -6,6 +6,12 @@ Page({
    */
   data: {
 
+  },
+
+  onGoHome() {
+    wx.redirectTo({
+      url: '/pages/do/do',
+    })
   },
 
   /**
