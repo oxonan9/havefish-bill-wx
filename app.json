@@ -2,6 +2,8 @@
   "usingComponents": {
     "l-avatar": "/miniprogram_npm/lin-ui/avatar/index",
     "l-list": "/miniprogram_npm/lin-ui/list/index",
+    "l-tabs": "/miniprogram_npm/lin-ui/tabs/index",
+    "l-tabpanel": "/miniprogram_npm/lin-ui/tabpanel/index",
     "v-nav": "/components/nav/index"
   },
   "pages": [
@@ -15,34 +17,9 @@
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom",
-    "backgroundColor": "#75ba95"
+    "backgroundColor": "#ffffff"
   },
-  "tabBar": {
-    "custom": true,
-    "color": "#bbbbbb",
-    "selectedColor": "#333333",
-    "backgroundColor": "#ffffff",
-    "borderStyle": "white",
-    "list": [{
-        "pagePath": "pages/home/home",
-        "text": "首页",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_hl.png"
-      },
-      {
-        "pagePath": "pages/home/home",
-        "text": "记账",
-        "iconPath": "/images/add_hl.png",
-        "selectedIconPath": "/images/add_hl.png"
-      },
-      {
-        "pagePath": "pages/mine/mine",
-        "text": "我的",
-        "iconPath": "/images/my.png",
-        "selectedIconPath": "/images/my_hl.png"
-      }
-    ]
-  },
+  
   "style": "v2",
   "sitemapLocation": "sitemap85.json"
 }

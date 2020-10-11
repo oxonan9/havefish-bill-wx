@@ -1,45 +1,39 @@
-	<view class="container">
-		<view class="top-container">
-			<v-nav />
-			<view class="title-container">
-				<text class="title">2020年10月</text>
+	<!-- <view class="container"> -->
+	<view class="top-container">
+		<v-nav />
+		<view class="title-container">
+			<text class="title">十月</text>
+		</view>
+		<view class="amount-container">
+			<view class="shouru-container">
+				<text>收入（元）</text>
+				<text class="amount-text">5560.50</text>
 			</view>
-			<view class="amount-container">
-				<view class="shouru-container">
-					<text>收入（元）</text>
-					<text class="amount-text">5560.50</text>
-				</view>
-				<view class="zhichu-container">
-					<text>支出（元）</text>
-					<text class="amount-text">499.00</text>
-				</view>
+			<view class="zhichu-container">
+				<text>支出（元）</text>
+				<text class="amount-text">499.00</text>
 			</view>
 		</view>
+	</view>
 
-		<view>
+	<scroll-view scroll-y show-scrollbar="{{false}}"	>
+		<block wx:for="{{dataList}}" wx:key="index" wx:item="item">
 			<view class="item-container">
-				<text class="item-date">今天</text>
+				<image class="pivot" src="/images/pivot.png"></image>
+				<text class="item-date">{{item.dateTime}}</text>
 				<text class="item-amount">收入300，支出150</text>
 			</view>
 			<view class="shop-container">
-				<view class="shop-item-container">
-					<image class="item-image" src="/images/yanjiu.png"></image>
-					<text class="item-title">烟酒</text>
-					<text class="amount">- 60</text>
-				</view>
-				<view class="line"></view>
-				<view class="shop-item-container">
-					<image class="item-image" src="/images/canyin.png"></image>
-					<text class="item-title">餐饮</text>
-					<text class="amount">- 60</text>
-				</view>
-				<view class="line"></view>
-				<view class="shop-item-container">
-					<image class="item-image" src="/images/gongzi.png"></image>
-					<text class="item-title">信用卡</text>
-					<text class="amount">- 60</text>
-				</view>
+				<block wx:for="{{item.list}}" wx:key="index" wx:for-item="record">
+					<view class="shop-item-container">
+						<image class="item-image" src="/images/yanjiu.png" />
+						<text class="item-title">{{record.title}}</text>
+						<text class="amount">{{record.amount}}</text>
+					</view>
+				</block>
 			</view>
+		</block>
+	</scroll-view>
 
-		</view>
-	</view>
+<view class="bottom-container"></view>
+	<!-- </view> -->

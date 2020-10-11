@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "绿橙记账"
+  "navigationBarTitleText": "绿橙记账",
+  "disableScroll": true
 }

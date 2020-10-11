@@ -76,6 +76,20 @@
 					"id": -1,
 					"name": "pages/mine/mine",
 					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/do/do",
+					"pathName": "pages/do/do",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/welcome/welcome",
+					"pathName": "pages/welcome/welcome",
 					"scene": null
 				}
 			]

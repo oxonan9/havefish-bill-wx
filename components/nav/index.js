@@ -25,7 +25,6 @@ Component({
     const {
       statusBarHeight,
     } = getApp().globalData
-    console.log(statusBarHeight)
     this.setData({
       statusBarHeight,
     })

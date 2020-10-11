@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "coolui-scroll": "coolui-scroller/index"
+  }
 }

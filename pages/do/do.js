@@ -1,18 +1,29 @@
-// pages/do/do.js
+import {
+  dataList
+} from '../../data/home-data.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let windowHeight = wx.getSystemInfoSync().windowHeight // 屏幕的高度
+    let windowWidth = wx.getSystemInfoSync().windowWidth // 屏幕的宽度
+    let ratio = 750 / windowWidth;
 
+    this.setData({
+      scroll_height: (windowHeight - 100) * ratio
+    })
+    this.setData({
+      dataList
+    })
   },
 
   /**

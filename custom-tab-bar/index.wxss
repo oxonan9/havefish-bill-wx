@@ -3,7 +3,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 48px;
+  height: 96rpx;
+  flex: 0 0 96rpx;
   background: #FFF;
   display: flex;
   line-height: 1.2;
@@ -32,11 +33,11 @@
 .bulge .tab-bar-bulge {
   position: absolute;
   /* z-index: -1; */
-  top: -49rpx;
+  top: -50rpx;
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
-  box-shadow: 0px 0px 10px 5px rgba(121, 189, 149, 40);
+  box-shadow: 0px 2px 6px 0px rgba(189, 189, 189, 100);
 }
 
 .bulge .image {
@@ -44,6 +45,7 @@
   width: 105rpx;
   height: 105rpx;
   top: -50rpx;
+
 }
 
 .tab-bar-item .tab-bar-view {

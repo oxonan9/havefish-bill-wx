@@ -1,2 +1,52 @@
-<!--pages/do/do.wxml-->
-<text>pages/do/do.wxml</text>
+	<v-nav />
+
+	<view class='wraper'>
+		<view class='header'>
+			<view class="header-image">
+				<image src="/images/fenxi.png"></image>
+				<image src="/images/budget.png"></image>
+				<image src="/images/setting.png"></image>
+			</view>
+
+			<view class="header-title-date">
+				<text class="header-title">流水记录</text>
+				<view class="header-date">
+					<text>2020年10月</text>
+					<image class="header-date-image" src="/images/arrow.png"></image>
+				</view>
+			</view>
+
+			<view class="header-amount">
+				<view class="income">
+					<text class="income-amount">5589.00</text>
+					<text class="income-text">收入</text>
+				</view>
+
+				<image class="sift" src="/images/sift.png"></image>
+
+				<view class="consume">
+					<text class="consume-amount">200.00</text>
+					<text class="consume-text">支出</text>
+				</view>
+			</view>
+		</view>
+		<view class='main'>
+			<scroll-view refresher-enabled class='main-scroll' scroll-y style="height: 100%">
+				<view class='main-list'>
+					<block wx:for="{{dataList}}" wx:key="index" wx:item="item">
+						<text class="date">今天，星期日 支出：-437.00，收入：+410.00</text>
+						<view class="item-container" wx:for="{{item.list}}" wx:key="index" wx:for-item="record">
+							<image class="item-image" src="/images/naicha.png"></image>
+							<text class="item-title">秋茶</text>
+							<text class="item-amount">-{{record.amount}}</text>
+						</view>
+					</block>
+				</view>
+			</scroll-view>
+		</view>
+
+		<view class='footer'>
+			<image class="add" src="/images/add_hl.png"></image>
+		</view>
+
+	</view>
