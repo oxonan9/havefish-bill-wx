@@ -1,33 +1,40 @@
-// pages/index/index.js
 import {
-  dataList
-} from '../../data/home-data.js'
-let listData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  RecordModel
+} from '../../models/record.js'
 
+const recordModel = new RecordModel();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 配置
-    scroll: {
-      pagination: {
-        page: 1,
-        totalPage: 10,
-        limit: 10,
-        length: 100
-      },
-    }
+    date: "2019-09",
+    show_loading: true
   },
 
+  onGoTally() {
+    wx.redirectTo({
+      url: '/pages/tally/tally',
+    })
+  },
+  bindDateChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      dataList,
-      list: listData
+    let promise = recordModel.getRecordList();
+    promise.then(res => {
+      console.log(res)
+      this.setData({
+        dataList: res.data,
+        show_loading: false
+      })
     })
   },
 
@@ -38,19 +45,11 @@ Page({
 
   },
 
-  onSearch() {
-    console.log("123")
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0
-      })
-    }
+
   },
 
   /**

@@ -1,10 +1,18 @@
 <view class="container">
-	<van-grid column-num="5" border="{{ false }}">
-		<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids1 }}" wx:for-item="item" data-id="{{item.id}}" clickable bind:click="onClick">
-			<view class="haha" style="background-color: {{selectedId==item.id?'#8CC7B5':'#e6e6e6'}}">
-				<image style="width: 60rpx; height: 60rpx;" src="{{selectedId==item.id?item.image:item.image_dis}}" />
-			</view>
-			<text>{{item.text}}</text>
-		</van-grid-item>
-	</van-grid>
+	<view class="readySave">
+		<image class="ready-img" src="{{readyObj.image}}"></image>
+		<text class="ready-title">{{readyObj.text}}</text>
+		<!-- <l-input class="ready-amount" hide-label placeholder="备注..." showRow="{{false}}" /> -->
+	</view>
+
+	<view class="grid">
+		<van-grid column-num="4" border="{{ false }}">
+			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" data-id="{{item.id}}" clickable bind:click="onClick">
+				<view class="haha" style="background-color: #efecfd">
+					<image style="width: 60rpx; height: 60rpx;" src="{{item.image}}" />
+				</view>
+				<text>{{item.text}}</text>
+			</van-grid-item>
+		</van-grid>
+	</view>
 </view>

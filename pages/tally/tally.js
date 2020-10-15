@@ -1,24 +1,160 @@
 // pages/tally/tally.js
+
+let consume_grids = [{
+    id: 1,
+    image: "/images/account/eat.png",
+    text: "三餐"
+  }, {
+    id: 2,
+    image: "/images/account/shopping.png",
+    text: "购物"
+  }, {
+    id: 3,
+    image: "/images/account/sock.png",
+    text: "零食"
+  }, {
+    id: 4,
+    image: "/images/account/fruit.png",
+    text: "水果"
+  }, {
+    id: 5,
+    image: "/images/account/plane.png",
+    text: "出行"
+  }, {
+    id: 6,
+    image: "/images/account/car.png",
+    text: "修车"
+  }, {
+    id: 7,
+    image: "/images/account/education.png",
+    text: "学习"
+  }, {
+    id: 8,
+    image: "/images/account/children.png",
+    text: "小孩"
+  },
+  {
+    id: 9,
+    image: "/images/account/gift.png",
+    text: "送礼"
+  },
+  {
+    id: 10,
+    image: "/images/account/pet.png",
+    text: "宠物"
+  },
+  {
+    id: 11,
+    image: "/images/account/skin.png",
+    text: "护肤"
+  },
+  {
+    id: 12,
+    image: "/images/account/phone.png",
+    text: "通讯"
+  }
+];
+
+import {
+  formatTime
+} from '../../utils/utils.js'
+let income_grids = [{
+  id: 1,
+  image: "/images/account/salary.png",
+  text: "工资"
+}, {
+  id: 2,
+  image: "/images/account/bonus.png",
+  text: "奖金"
+}, {
+  id: 3,
+  image: "/images/account/financing.png",
+  text: "理财"
+}, {
+  id: 4,
+  image: "/images/account/lifefee.png",
+  text: "生活费"
+}, {
+  id: 5,
+  image: "/images/account/vicejob.png",
+  text: "兼职"
+}, {
+  id: 6,
+  image: "/images/account/wipeout.png",
+  text: "报销"
+}, {
+  id: 7,
+  image: "/images/account/refund.png",
+  text: "退款"
+}, {
+  id: 7,
+  image: "/images/account/gift.png",
+  text: "礼金"
+}, ];
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
+    show_popup: false,
+    minHour: 10,
+    maxHour: 20,
+    maxDate: new Date().getTime(),
+    minDate: new Date(2019, 10, 1).getTime(),
+    currentDate: new Date().getTime(),
+    consume_grids: consume_grids,
+    income_grids: income_grids,
+    showDate: formatTime(new Date())
+  },
+
+  // onInput(event) {
+  //   console.log(event)
+  //   this.setData({
+  //     currentDate: event.detail,
+  //   });
+  //   console.log(this.data.currentDate)
+  // },
+
+  onConfirm(event) {
+    console.log(event)
+    this.setData({
+      show_popup: false,
+      showDate: formatTime(new Date(event.detail))
+    })
 
   },
 
-  onGoHome() {
-    wx.redirectTo({
-      url: '/pages/do/do',
+  onCancel() {
+    this.setData({
+      show_popup: false
     })
+  },
+
+  onSave() {
+   wx.request({
+     url: 'http://localhost:8080/record/save',
+     method:"POST",
+     data:{
+        "categoryId":1,
+        "type":0,
+        "amount":188.88,
+        "remark":"花点钱12怎么了",
+        "recordTime":new Date()
+     },
+     success:(res)=>{
+      wx.redirectTo({
+        url: '/pages/home/home',
+      })
+     }
+   })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      currentDate: new Date().getTime()
+    })
+    console.log(this.data.currentDate)
   },
 
   /**
@@ -68,5 +204,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  onPopupPicker() {
+    this.setData({
+      show_popup: true
+    })
   }
 })

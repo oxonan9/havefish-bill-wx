@@ -5,7 +5,7 @@ Component({
     "backgroundColor": "#ffffff",
     "borderStyle": "#ffffff",
     list: [{
-        pagePath: "/pages/do/do",
+        pagePath: "/pages/home/home",
         text: "首页",
         iconPath: "/images/home.png",
         selectedIconPath: "/images/home_hl.png"
@@ -17,7 +17,7 @@ Component({
         selectedIconPath: "/images/add_hl.png"
       },
       {
-        pagePath: "/pages/mine/mine",
+        pagePath: "/pages/home/home",
         text: "我的",
         iconPath: "/images/my.png",
         selectedIconPath: "/images/my_hl.png"

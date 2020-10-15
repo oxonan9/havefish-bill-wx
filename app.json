@@ -10,13 +10,12 @@
     "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
     "van-grid": "@vant/weapp/grid/index",
     "van-grid-item": "@vant/weapp/grid-item/index",
-    "l-input":"/miniprogram_npm/lin-ui/input/index"
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "l-input": "/miniprogram_npm/lin-ui/input/index",
+    "l-loading": "/miniprogram_npm/lin-ui/loading/index"
   },
   "pages": [
-    "pages/do/do",
     "pages/home/home",
-    "pages/welcome/welcome",
-    "pages/mine/mine",
     "pages/tally/tally"
   ],
   "window": {

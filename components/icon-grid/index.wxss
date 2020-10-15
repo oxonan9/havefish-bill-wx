@@ -3,7 +3,7 @@
 .haha {
   width: 80rpx;
   height: 80rpx;
-  border-radius: 50%;
+  border-radius: 10rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -16,4 +16,46 @@ text {
   margin-top: 10rpx;
   font-size: 24rpx;
   color: #333333;
+}
+
+.readySave {
+  width: 660rpx;
+  height: 120rpx;
+  margin: 20rpx auto;
+  background-color: #fff;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+
+.ready-img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 40rpx;
+}
+
+.ready-title {
+  margin-left: 40rpx;
+}
+
+.ready-amount {
+  position: absolute;
+  right: 40rpx;
+  font-weight: bold;
+  font-size: 36rpx;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: blueviolet;
+}
+
+.grid {
+  width: 660rpx;
+  margin: 20rpx auto;
+  background-color: #fff;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100);
 }

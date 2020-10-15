@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "l-transition": "/miniprogram_npm/lin-ui/transition/index"
-  },
-  "navigationBarTitleText": "我的"  
-}

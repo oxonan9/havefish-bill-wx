@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "绿橙记账",
+  "usingComponents": {
+    "v-nav": "/components/nav/index",
+    "account":"/components/account/index"
+  },
   "disableScroll": true
+
 }
