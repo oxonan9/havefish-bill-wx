@@ -12,7 +12,8 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "l-input": "/miniprogram_npm/lin-ui/input/index",
-    "l-loading": "/miniprogram_npm/lin-ui/loading/index"
+    "l-loading": "/miniprogram_npm/lin-ui/loading/index",
+    "l-message": "/miniprogram_npm/lin-ui/message/index"
   },
   "pages": [
     "pages/home/home",

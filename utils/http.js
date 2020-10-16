@@ -14,7 +14,6 @@ class HTTP {
   }
 
   _request(url, resolve, reject, method = "GET", data = {}) {
-    console.log(config.baseUrl + url)
     wx.request({
       url: config.baseUrl + url,
       method: method,
@@ -24,8 +23,15 @@ class HTTP {
       },
       fail: (error) => {
         reject()
-        console.log(error)
+        this._showError("抱歉，服务器可能开小差了")
       }
+    })
+  }
+
+  _showError(msg) {
+    wx.lin.showMessage({
+      content: msg,
+      type: 'error',
     })
   }
 }

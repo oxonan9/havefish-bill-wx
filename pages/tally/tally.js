@@ -1,6 +1,10 @@
 import {
   RecordModel
 } from '../../models/record.js'
+
+import {
+  formatTime
+} from '../../utils/utils.js'
 const recordModel = new RecordModel()
 let consume_grids = [{
     id: 1,
@@ -35,77 +39,74 @@ let consume_grids = [{
     image: "/images/account/children.png",
     text: "小孩"
   },
-  {
-    id: 9,
-    image: "/images/account/gift.png",
-    text: "送礼"
-  },
-  {
-    id: 10,
-    image: "/images/account/pet.png",
-    text: "宠物"
-  },
-  {
-    id: 11,
-    image: "/images/account/skin.png",
-    text: "护肤"
-  },
-  {
-    id: 12,
-    image: "/images/account/phone.png",
-    text: "通讯"
-  }
+  // {
+  //   id: 9,
+  //   image: "/images/account/gift.png",
+  //   text: "送礼"
+  // },
+  // {
+  //   id: 10,
+  //   image: "/images/account/pet.png",
+  //   text: "宠物"
+  // },
+  // {
+  //   id: 11,
+  //   image: "/images/account/skin.png",
+  //   text: "护肤"
+  // },
+  // {
+  //   id: 12,
+  //   image: "/images/account/phone.png",
+  //   text: "通讯"
+  // }
 ];
-
-import {
-  formatTime
-} from '../../utils/utils.js'
 let income_grids = [{
-  id: 1,
+  id: 13,
   image: "/images/account/salary.png",
   text: "工资"
 }, {
-  id: 2,
+  id: 14,
   image: "/images/account/bonus.png",
   text: "奖金"
 }, {
-  id: 3,
+  id: 15,
   image: "/images/account/financing.png",
   text: "理财"
 }, {
-  id: 4,
+  id: 16,
   image: "/images/account/lifefee.png",
   text: "生活费"
 }, {
-  id: 5,
+  id: 17,
   image: "/images/account/vicejob.png",
   text: "兼职"
 }, {
-  id: 6,
+  id: 18,
   image: "/images/account/wipeout.png",
   text: "报销"
 }, {
-  id: 7,
+  id: 19,
   image: "/images/account/refund.png",
   text: "退款"
 }, {
-  id: 7,
+  id: 20,
   image: "/images/account/gift.png",
   text: "礼金"
 }, ];
 Page({
-
   data: {
-    show_popup: false,
-    minHour: 10,
-    maxHour: 20,
+    show_popup: false, //是否显示弹框
+    show_message: false, //显示消息提示
     maxDate: new Date().getTime(),
     minDate: new Date(2019, 10, 1).getTime(),
     currentDate: new Date().getTime(),
-    consume_grids: consume_grids,
-    income_grids: income_grids,
+    consume_grids: consume_grids, //支出宫格集合
+    income_grids: income_grids, //收入宫格集合
     showDate: formatTime(new Date()),
-    remark: ""
+    amount: 0,
+    remark: "", //备注
+    categoryId: 1, //分类id 
+    type: 0 //0-支出 1-收入
   },
 
   onPopupPicker() {
@@ -115,32 +116,59 @@ Page({
   },
 
   onConfirm(event) {
-    console.log(event)
     this.setData({
       show_popup: false,
       showDate: formatTime(new Date(event.detail))
     })
   },
 
-  onPost(event) {
-    console.log(event.detail.value)
+  onSetRemark(event) {
     this.setData({
       remark: event.detail.value
     })
   },
 
-  onCancel() {
+  //取消弹框
+  onCancelPopup() {
     this.setData({
       show_popup: false
     })
   },
 
+  //切换标签  支出-收入
+  onChangeTab(event) {
+    let categoryId = event.detail.currentIndex == 0 ? this.data.consume_grids[0].id : this.data.income_grids[0].id;
+    this.setData({
+      type: event.detail.currentIndex,
+      categoryId
+    })
+  },
+
+  //选择分类 
+  onSelect(event) {
+    this.setData({
+      categoryId: event.detail
+    })
+  },
+
+  getAmount(event) {
+    this.setData({
+      amount: event.detail
+    })
+  },
+
   onSave() {
-    console.log(this.data.remark)
+    if (this.data.amount == 0) {
+      wx.showToast({
+        title: '花了多少钱写一下吧~',
+        icon: "none"
+      })
+      return;
+    }
     recordModel.saveRecord({
-      "categoryId": 14,
-      "type": 1,
-      "amount": 7200,
+      "categoryId": this.data.categoryId,
+      "type": this.data.type,
+      "amount": this.data.amount,
       "remark": this.data.remark,
       "recordTime": this.data.showDate
     }).then(res => {
@@ -157,7 +185,7 @@ Page({
     this.setData({
       currentDate: new Date().getTime()
     })
-    console.log(this.data.currentDate)
+
   },
 
   /**

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "icon-grid":"/components/icon-grid/index"
+    "category": "/components/category/index"
   },
   "navigationBarTitleText": "记一笔",
   "navigationStyle": "default"

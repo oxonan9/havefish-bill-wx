@@ -1,24 +1,24 @@
-<v-nav />
+<l-message />
 <view class="wrapper">
 	<!-- <view class="header">
     <image bind:tap="onGoHome" class="arrow" src="/images/go_home.png"></image>
 	</view> -->
-	<l-tabs l-class-header="tabs" animated-for-line bind:linchange="changeTabs">
+	<l-tabs l-class-header="tabs" animated-for-line bind:linchange="onChangeTab">
 		<l-tabpanel tab="支出" key="one" slot="one">
 			<view class="tab-content">
-				<icon-grid grids="{{consume_grids}}" />
+				<category bind:select="onSelect" bind:post="getAmount" grids="{{consume_grids}}" />
 			</view>
 		</l-tabpanel>
 		<l-tabpanel tab="收入" key="two" slot="two">
 			<view class="tab-content">
-				<icon-grid grids="{{income_grids}}" />
+				<category bind:select="onSelect" bind:post="getAmount" grids="{{income_grids}}" />
 			</view>
 		</l-tabpanel>
 	</l-tabs>
 
 	<view class="remark-container">
 		<image src="/images/remark.png"></image>
-		<l-input hide-label bind:linconfirm="onPost" bind:linblur="onPost"	 placeholder="备注..." showRow="{{false}}" />
+		<l-input hide-label bind:linconfirm="onSetRemark" placeholder="写个备注..." showRow="{{false}}" />
 	</view>
 
 	<view class="date-container">
@@ -28,7 +28,7 @@
 
 	<l-popup show="{{show_popup}}" content-align="bottom" animation="hide">
 		<!-- // bind:input="onInput" -->
-		<van-datetime-picker type="datetime" title="选择完整时间" value="{{currentDate}}" min-date="{{minDate}}" max-date="{{maxDate}}" bind:change="onInput" bind:cancel="onCancel" bind:confirm="onConfirm" />
+		<van-datetime-picker type="datetime" title="选择完整时间" value="{{currentDate}}" min-date="{{minDate}}" max-date="{{maxDate}}" bind:cancel="onCancelPopup" bind:confirm="onConfirm" />
 	</l-popup>
 
 	<view class="save-container" bind:tap="onSave">

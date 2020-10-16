@@ -1,9 +1,5 @@
 	<v-nav />
-
 	<view class='wraper'>
-		<!-- <l-popup show="{{true}}" content-align="bottom">
-			<view class="popup-view">丁江楠</view>
-		</l-popup> -->
 		<view class='header'>
 			<view class="header-image">
 				<image src="/images/fenxi.png"></image>
@@ -12,16 +8,12 @@
 			</view>
 			<view class="header-title-date">
 				<text class="header-title">流水记录</text>
-				<view class="header-date">
-					<view class="section">
-						<!-- <picker mode="date" fields="month" value="{{date}}" start="2015-10-01" end="{{date}}" bindchange="bindDateChange">
-							<view class="picker">
-								{{date}}
-								<image class="header-date-image" src="/images/arrow.png"></image>
-							</view>
-						</picker> -->
-					</view>
-					<!-- <text>2020年10月</text> -->
+				<view class="header-date" bind:tap="onSelectDate">
+					<l-popup show="{{show_popup}}" animation="hide" content-align="bottom">
+						<van-datetime-picker type="year-month" value="{{ currentDate }}" max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
+					</l-popup>
+					<text>{{showDate}}</text>
+					<image src="/images/arrow.png"></image>
 				</view>
 			</view>
 
@@ -30,9 +22,7 @@
 					<text class="income-amount">5589.00</text>
 					<text class="income-text">收入</text>
 				</view>
-
 				<image class="sift" src="/images/sift.png"></image>
-
 				<view class="consume">
 					<text class="consume-amount">200.00</text>
 					<text class="consume-text">支出</text>
@@ -40,12 +30,10 @@
 			</view>
 		</view>
 		<view class='main'>
-
 			<l-loading class="loading" show="{{show_loading}}" type="flash"></l-loading>
-
 			<scroll-view scroll-y class='main-scroll' style="height: 100%">
 				<view class='main-list'>
-					<account wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
+					<record wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
 				</view>
 			</scroll-view>
 		</view>

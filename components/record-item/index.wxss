@@ -19,3 +19,10 @@
   color: #16A83B;
   font-weight: bold;
 }
+
+.item-amount1 {
+  position: absolute;
+  right: 40rpx;
+  color: #E46A6F;
+  font-weight: bold;
+}

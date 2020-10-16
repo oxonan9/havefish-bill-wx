@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "v-nav": "/components/nav/index",
-    "account":"/components/account/index"
+    "record":"/components/record/index"
   },
   "disableScroll": true
 

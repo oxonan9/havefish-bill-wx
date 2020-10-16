@@ -11,7 +11,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    readyObj: {},
+    amount: 0
   },
 
   /**
@@ -20,8 +21,13 @@ Component({
   methods: {
     onClick(event) {
       this.setData({
-        readyObj: this.properties.grids[event.currentTarget.dataset.id - 1]
+        readyObj: this.properties.grids[event.currentTarget.dataset.index]
       })
+      this.triggerEvent('select', this.data.readyObj.id, {})
+    },
+
+    onPost(event) {
+      this.triggerEvent("post", event.detail.value, {})
     }
   },
   attached() {

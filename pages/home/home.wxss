@@ -31,7 +31,7 @@ page {
   margin-left: 40rpx;
 }
 
-.header-date-image {
+.header-date image {
   width: 40rpx;
   height: 40rpx;
 }
@@ -140,23 +140,12 @@ page {
   align-items: center;
 }
 
-/* .footer {
-  background: rgb(8, 117, 94);
-  color: #fff;
-  height: 150rpx;
-  flex: 0 0 150rpx;
-  display: flex;
-  line-height: 1.2;
-  padding-bottom: env(safe-area-inset-bottom);
-  /* 不放大不缩小固定100rpx */
-
-
 .add {
   width: 120rpx;
   height: 120rpx;
-  margin-bottom: 50rpx;
-  border-radius: 29px;
-  box-shadow: 0px 2px 6px 0px rgba(189, 189, 189, 100);
+  margin-bottom: 40rpx;
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 0px #aaa;
 }
 
 

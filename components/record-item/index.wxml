@@ -1,0 +1,9 @@
+<view class="container">
+	<image class="item-image" src="{{data.icon}}"></image>
+	<text class="item-title">{{data.name}}</text>
+	<view class="{{data.type==0?'item-amount1':'item-amount'}}">
+		<text>{{data.type==0?'-':'+'}}</text>
+		<text>{{data.amount}}</text>
+	</view>
+
+</view>

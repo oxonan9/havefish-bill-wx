@@ -2,16 +2,16 @@
 	<view class="readySave">
 		<image class="ready-img" src="{{readyObj.image}}"></image>
 		<text class="ready-title">{{readyObj.text}}</text>
-		<l-input class="amount" hide-label showRow="{{false}}" />
+		<l-input l-input-class="l-input-class" class="amount" bind:linconfirm="onPost" bind:linblur="onPost" type="digit" maxlength="10" hide-label showRow="{{false}}" placeholder="88.88" />
 	</view>
 
 	<view class="grid">
 		<van-grid column-num="4" border="{{ false }}">
-			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" wx:key="id" data-id="{{item.id}}" clickable bind:click="onClick">
+			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" wx:key="id" data-index="{{index}}" data-id="{{item.id}}" clickable bind:click="onClick">
 				<view class="haha" style="background-color: #efecfd">
 					<image style="width: 60rpx; height: 60rpx;" src="{{item.image}}" />
 				</view>
-				<text>{{item.text}}</text>
+				<text class="category-name">{{item.text}}</text>
 			</van-grid-item>
 		</van-grid>
 	</view>

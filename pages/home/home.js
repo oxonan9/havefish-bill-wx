@@ -2,6 +2,9 @@ import {
   RecordModel
 } from '../../models/record.js'
 
+import {
+  formatTime
+} from '../../utils/utils.js'
 const recordModel = new RecordModel();
 Page({
 
@@ -10,7 +13,11 @@ Page({
    */
   data: {
     date: "2019-09",
-    show_loading: true
+    show_loading: true,
+    show_popup: false,
+    currentDate: new Date().getTime(),
+    maxDate: new Date().getTime(),
+    showDate: formatTime(new Date(), "yyyy-MM")
   },
 
   onGoTally() {
@@ -18,19 +25,31 @@ Page({
       url: '/pages/tally/tally',
     })
   },
-  bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+
+  onSelectDate(event) {
+    console.log(event)
     this.setData({
-      date: e.detail.value
+      show_popup: true
     })
+  },
+  onConfirm(event) {
+    this.setData({
+      currentDate: new Date(event.detail).getTime(),
+      showDate: formatTime(new Date(event.detail), "yyyy-MM"),
+      show_popup: false
+    })
+    this._getRecordList(this.data.showDate)
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let promise = recordModel.getRecordList();
+    this._getRecordList(this.data.showDate)
+  },
+
+  _getRecordList(date) {
+    let promise = recordModel.getRecordList(date);
     promise.then(res => {
-      console.log(res)
       this.setData({
         dataList: res.data,
         show_loading: false
