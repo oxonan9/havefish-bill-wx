@@ -2,12 +2,12 @@
 	<view class="readySave">
 		<image class="ready-img" src="{{readyObj.image}}"></image>
 		<text class="ready-title">{{readyObj.text}}</text>
-		<!-- <l-input class="ready-amount" hide-label placeholder="备注..." showRow="{{false}}" /> -->
+		<l-input class="amount" hide-label showRow="{{false}}" />
 	</view>
 
 	<view class="grid">
 		<van-grid column-num="4" border="{{ false }}">
-			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" data-id="{{item.id}}" clickable bind:click="onClick">
+			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" wx:key="id" data-id="{{item.id}}" clickable bind:click="onClick">
 				<view class="haha" style="background-color: #efecfd">
 					<image style="width: 60rpx; height: 60rpx;" src="{{item.image}}" />
 				</view>

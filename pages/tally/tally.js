@@ -1,5 +1,7 @@
-// pages/tally/tally.js
-
+import {
+  RecordModel
+} from '../../models/record.js'
+const recordModel = new RecordModel()
 let consume_grids = [{
     id: 1,
     image: "/images/account/eat.png",
@@ -102,16 +104,15 @@ Page({
     currentDate: new Date().getTime(),
     consume_grids: consume_grids,
     income_grids: income_grids,
-    showDate: formatTime(new Date())
+    showDate: formatTime(new Date()),
+    remark: ""
   },
 
-  // onInput(event) {
-  //   console.log(event)
-  //   this.setData({
-  //     currentDate: event.detail,
-  //   });
-  //   console.log(this.data.currentDate)
-  // },
+  onPopupPicker() {
+    this.setData({
+      show_popup: true
+    })
+  },
 
   onConfirm(event) {
     console.log(event)
@@ -119,7 +120,13 @@ Page({
       show_popup: false,
       showDate: formatTime(new Date(event.detail))
     })
+  },
 
+  onPost(event) {
+    console.log(event.detail.value)
+    this.setData({
+      remark: event.detail.value
+    })
   },
 
   onCancel() {
@@ -129,22 +136,18 @@ Page({
   },
 
   onSave() {
-   wx.request({
-     url: 'http://localhost:8080/record/save',
-     method:"POST",
-     data:{
-        "categoryId":1,
-        "type":0,
-        "amount":188.88,
-        "remark":"花点钱12怎么了",
-        "recordTime":new Date()
-     },
-     success:(res)=>{
+    console.log(this.data.remark)
+    recordModel.saveRecord({
+      "categoryId": 14,
+      "type": 1,
+      "amount": 7200,
+      "remark": this.data.remark,
+      "recordTime": this.data.showDate
+    }).then(res => {
       wx.redirectTo({
         url: '/pages/home/home',
       })
-     }
-   })
+    })
   },
 
   /**
@@ -206,9 +209,5 @@ Page({
 
   },
 
-  onPopupPicker() {
-    this.setData({
-      show_popup: true
-    })
-  }
+
 })

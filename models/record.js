@@ -10,6 +10,14 @@ class RecordModel extends HTTP {
     })
   }
 
+  saveRecord(data) {
+    return this.request({
+      url: "record/save",
+      method: "POST",
+      data: data
+    })
+  }
+
 }
 
 export {

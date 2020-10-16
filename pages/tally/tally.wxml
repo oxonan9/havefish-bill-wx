@@ -18,7 +18,7 @@
 
 	<view class="remark-container">
 		<image src="/images/remark.png"></image>
-		<l-input hide-label placeholder="备注..." showRow="{{false}}" />
+		<l-input hide-label bind:linconfirm="onPost" bind:linblur="onPost"	 placeholder="备注..." showRow="{{false}}" />
 	</view>
 
 	<view class="date-container">

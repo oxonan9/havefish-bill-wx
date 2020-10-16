@@ -43,7 +43,8 @@ text {
   margin-left: 40rpx;
 }
 
-.ready-amount {
+.amount {
+  width: 200rpx;
   position: absolute;
   right: 40rpx;
   font-weight: bold;
