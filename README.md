@@ -5,10 +5,10 @@
 
 # 使用技术
 
-前端：小程序原生、Lin-UI开源组件库
-后端：Java、SpringBoot、JPA
+* 前端：原生小程序、Lin-UI开源组件库
+* 后端：Java、SpringBoot、JPA
 
-目前只开放了前端源码，后端接口我已经部署到了线上，后续也会开源，这是[接口文档](https://docs.apipost.cn/view/e4455ed76245f853)，可以直接访问
+目前只开放了前端源码，后端接口我已经部署到了线上，这是[接口文档](https://docs.apipost.cn/view/e4455ed76245f853)，可以直接访问，后续也会开源
 
 
 # 项目截图

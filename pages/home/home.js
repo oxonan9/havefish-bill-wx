@@ -47,14 +47,13 @@ Page({
     this._getRecordList(this.data.showDate)
   },
 
-  _getRecordList(date) {
-    let promise = recordModel.getRecordList(date);
-    promise.then(res => {
-      this.setData({
-        dataList: res.data,
-        show_loading: false
-      })
-    })
+  async _getRecordList(date) {
+    let res = await recordModel.getRecordList(date);
+    console.log(res)
+    // this.setData({
+    //   dataList: promise.data,
+    //   show_loading: false
+    // })
   },
 
   /**

@@ -7,14 +7,13 @@ class RecordModel extends HTTP {
   /**
    * 获取流水列表
    */
-  getRecordList(date) {
-    return this.request({
+  async getRecordList(date) {
+    return await this.request({
       url: "record/list",
       method: "GET",
       data: {
         recordTime: date
       }
-
     })
   }
 
