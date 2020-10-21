@@ -1,0 +1,48 @@
+<view class="wrapper">
+  <view class="header">
+    <view class="year-month">
+      <text style="background-color:{{selected?selectedColor:unSelectedColor}}" class="year" bindtap="onTap">年份</text>
+      <text style="background-color:{{selected?unSelectedColor:selectedColor}}" class=" month" bindtap="onTap">月份</text>
+    </view>
+    <view class="date" bind:tap="onSelectDate">
+      <l-popup class="popup" show="{{false}}" animation="hide" content-align="bottom">
+        <van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
+          max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
+      </l-popup>
+      <text>2020-10</text>
+      <image src="/images/sift.png"></image>
+    </view>
+  </view>
+
+  <view class="main">
+    <view class="container">
+      <text class="title">分类统计</text>
+      <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:tap="onTap"></ec-canvas>
+      <view class="category-item">
+        <image src="/images/add_hl.png"></image>
+        <text class="name">汽车</text>
+        <view class="number">
+          <text class="amount">168.00</text>
+          <text class="percent">3.45%</text>
+        </view>
+      </view>
+      <view class="category-item">
+        <image src="/images/add_hl.png"></image>
+        <text class="name">汽车</text>
+        <view class="number">
+          <text class="amount">168.00</text>
+          <text class="percent">3.45%</text>
+        </view>
+      </view>
+      <view class="category-item">
+        <image src="/images/add_hl.png"></image>
+        <text class="name">汽车</text>
+        <view class="number">
+          <text class="amount">168.00</text>
+          <text class="percent">3.45%</text>
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>

@@ -1,44 +1,40 @@
+<!-- <view class="nav">
 	<v-nav />
-	<view class='wraper'>
-		<view class='header'>
-			<view class="header-image">
-				<image src="/images/fenxi.png"></image>
-				<image src="/images/budget.png"></image>
-				<image src="/images/setting.png"></image>
+</view> -->
+<view class='wraper'>
+	<view class='header'>
+		<!-- <view class="header-image">
+			<image src="/images/fenxi.png"></image>
+			<image src="/images/budget.png"></image>
+			<image src="/images/setting.png"></image>
+		</view> -->
+		<view class="header-title-date">
+			<view class="header-date" bind:tap="onSelectDate">
+				<l-popup class="popup" show="{{show_popup}}" animation="hide" content-align="bottom">
+					<van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
+						max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
+				</l-popup>
+				<text>{{showDate}}</text>
+				<image src="/images/arrow.png"></image>
 			</view>
-			<view class="header-title-date">
-				<text class="header-title">流水记录</text>
-				<view class="header-date" bind:tap="onSelectDate">
-					<l-popup show="{{show_popup}}" animation="hide" content-align="bottom">
-						<van-datetime-picker type="year-month" value="{{ currentDate }}" max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
-					</l-popup>
-					<text>{{showDate}}</text>
-					<image src="/images/arrow.png"></image>
-				</view>
-			</view>
+		</view>
 
-			<view class="header-amount">
-				<view class="income">
-					<text class="income-amount">5589.00</text>
+		<view class="header-amount">
+			<view class="income">
+				<text class="income-amount">{{recordAmount.income}}</text>
 					<text class="income-text">收入</text>
-				</view>
-				<image class="sift" src="/images/sift.png"></image>
-				<view class="consume">
-					<text class="consume-amount">200.00</text>
-					<text class="consume-text">支出</text>
-				</view>
 			</view>
-		</view>
-		<view class='main'>
-			<l-loading class="loading" show="{{show_loading}}" type="flash"></l-loading>
-			<scroll-view scroll-y class='main-scroll' style="height: 100%">
-				<view class='main-list'>
-					<record wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
-				</view>
-			</scroll-view>
-		</view>
-
-		<view class='footer' bind:tap="onGoTally">
-			<image class="add" src="/images/add_hl.png"></image>
+			<image class="sift" src="/images/sift.png"></image>
+			<view class="consume">
+				<text class="consume-amount">{{recordAmount.consume}}</text>
+				<text class="consume-text">支出</text>
+			</view>
 		</view>
 	</view>
+
+	<view class="main">
+		<record wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
+	</view>
+
+	<image bind:tap="onGoTally" class="add" src="/images/edit.png"></image>
+</view>

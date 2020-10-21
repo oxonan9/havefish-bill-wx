@@ -13,16 +13,46 @@
     "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "l-input": "/miniprogram_npm/lin-ui/input/index",
     "l-loading": "/miniprogram_npm/lin-ui/loading/index",
-    "l-message": "/miniprogram_npm/lin-ui/message/index"
+    "l-message": "/miniprogram_npm/lin-ui/message/index",
+    "l-segment": "/miniprogram_npm/lin-ui/segment/index",
+    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
+    "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index"
   },
   "pages": [
     "pages/home/home",
-    "pages/tally/tally"
+    "pages/tally/tally",
+    "pages/assay/assay",
+    "pages/my/my"
   ],
+  "tabBar": {
+    "color": "#bbbbbb",
+    "selectedColor": "#333333",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [{
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_hl.png"
+      },
+      {
+        "pagePath": "pages/assay/assay",
+        "text": "统计",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_hl.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home_hl.png"
+      }
+    ]
+  },
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom",
+    "navigationStyle": "default",
     "backgroundColor": "#ffffff"
   },
   "sitemapLocation": "sitemap85.json"

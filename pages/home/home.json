@@ -1,8 +1,7 @@
 {
   "usingComponents": {
     "v-nav": "/components/nav/index",
-    "record":"/components/record/index"
+    "record": "/components/record/index"
   },
-  "disableScroll": true
-
+  "navigationBarTitleText": "记一笔"
 }

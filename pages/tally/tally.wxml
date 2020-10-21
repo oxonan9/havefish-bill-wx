@@ -1,8 +1,6 @@
 <l-message />
 <view class="wrapper">
-	<!-- <view class="header">
-    <image bind:tap="onGoHome" class="arrow" src="/images/go_home.png"></image>
-	</view> -->
+
 	<l-tabs l-class-header="tabs" animated-for-line bind:linchange="onChangeTab">
 		<l-tabpanel tab="支出" key="one" slot="one">
 			<view class="tab-content">
@@ -28,7 +26,8 @@
 
 	<l-popup show="{{show_popup}}" content-align="bottom" animation="hide">
 		<!-- // bind:input="onInput" -->
-		<van-datetime-picker type="datetime" title="选择完整时间" value="{{currentDate}}" min-date="{{minDate}}" max-date="{{maxDate}}" bind:cancel="onCancelPopup" bind:confirm="onConfirm" />
+		<van-datetime-picker type="datetime" title="选择完整时间" value="{{currentDate}}" min-date="{{minDate}}"
+			max-date="{{maxDate}}" bind:cancel="onCancelPopup" bind:confirm="onConfirm" />
 	</l-popup>
 
 	<view class="save-container" bind:tap="onSave">

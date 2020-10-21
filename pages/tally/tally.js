@@ -160,19 +160,19 @@ Page({
   onSave() {
     if (this.data.amount == 0) {
       wx.showToast({
-        title: '花了多少钱写一下吧~',
+        title: '😝花了多少钱写一下吧~',
         icon: "none"
       })
       return;
     }
     recordModel.saveRecord({
-      "categoryId": this.data.categoryId,
+      "category_id": this.data.categoryId,
       "type": this.data.type,
       "amount": this.data.amount,
       "remark": this.data.remark,
-      "recordTime": this.data.showDate
+      "record_time": this.data.showDate
     }).then(res => {
-      wx.redirectTo({
+      wx.switchTab({
         url: '/pages/home/home',
       })
     })

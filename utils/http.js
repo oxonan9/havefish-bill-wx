@@ -30,10 +30,10 @@ class HTTP {
   }
 
   _showError(msg) {
-    wx.lin.showMessage({
-      content: msg,
-      type: 'error',
-    })
+    // wx.lin.showMessage({
+    //   content: msg,
+    //   type: 'error',
+    // })
   }
 }
 

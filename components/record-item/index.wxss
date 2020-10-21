@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .item-image {
   width: 80rpx;
   height: 80rpx;
+  margin-left: 40rpx;
 }
 
 .item-title {

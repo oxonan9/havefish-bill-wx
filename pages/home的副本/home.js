@@ -12,22 +12,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show_loadmore: false,
+    date: "2019-09",
     show_loading: true,
     show_popup: false,
     currentDate: new Date().getTime(),
     maxDate: new Date().getTime(),
     showDate: formatTime(new Date(), "yyyy-MM"),
     dataList: [],
-
     start: 0,
-    page: 0,
-    count: 10,
-
-    recordAmount: {
-      income: 0,
-      consume: 0
-    }
+    count: 20
   },
 
   onGoTally() {
@@ -37,6 +30,7 @@ Page({
   },
 
   onSelectDate(event) {
+    console.log(event)
     this.setData({
       show_popup: true
     })
@@ -47,44 +41,25 @@ Page({
       showDate: formatTime(new Date(event.detail), "yyyy-MM"),
       show_popup: false
     })
-    this._getRecordList(this.data.start, this.data.count, this.data.showDate)
+    this._getRecordList(this.data.showDate)
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad() {
-    let recordAmount = await recordModel.getRecordAmount(this.data.showDate);
-    this.setData({
-      recordAmount
-    })
-    console.log(this.data)
+  onLoad: function (options) {
     this._getRecordList(this.data.start, this.data.count, this.data.showDate)
   },
-  async _getRecordList(start, count, date) {
-    let dataList = this.data.dataList;
-    let data = await recordModel.getRecordList(start, count, date);
-    let items = data.items;
-    if (this.data.start == 0) {
-      dataList = items
-    } else {
-      for (let i in items) {
-        if (items[i].date == dataList[dataList.length - 1].date) {
-          dataList[dataList.length - 1].items = dataList[dataList.length - 1].items.concat(items[i].items)
-        } else {
-          dataList.push(items)
-        }
-      }
-    }
-    this.setData({
-      dataList: dataList,
-      page: data.page,
-      start: this.data.start + data.count,
-      totalPages: data.total_pages,
 
+  async _getRecordList(start, count, date) {
+    console.log(start)
+    let data = await recordModel.getRecordList(start, count, date);
+    this.setData({
+      dataList: this.data.dataList.concat(data),
       show_loading: false,
-      show_loadmore: false,
+      start: this.data.start + 1
     })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -125,12 +100,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.data.show_loadmore = true;
-    let page = this.data.page;
-    let totalPages = this.data.totalPages;
-    if (page + 1 == totalPages) {
-      return;
-    }
+
+  },
+
+  bindscrolltolower() {
     this._getRecordList(this.data.start, this.data.count, this.data.showDate)
   },
 

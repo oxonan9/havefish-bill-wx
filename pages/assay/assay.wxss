@@ -1,0 +1,114 @@
+page {
+  background-color: whitesmoke;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20rpx 40rpx;
+}
+
+.year-month {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 200rpx;
+  height: 70rpx;
+  background-color: #e6e6e6;
+  border-radius: 15rpx;
+}
+
+.year-month text {
+  width: 50%;
+  height: 27px;
+  line-height: 27px;
+  background-color: white;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 3px;
+}
+
+.date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  width: 200rpx;
+  height: 75rpx;
+  padding: 0 20rpx;
+
+  background-color: #e6e6e6;
+  border-radius: 10rpx;
+
+}
+
+.date image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px 0px rgba(245, 245, 245, 100);
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  position: relative;
+  padding-bottom: 20rpx;
+}
+
+.title {
+  margin-top: 20rpx;
+}
+
+ec-canvas {
+  width: 100%;
+  height: 500rpx;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  margin-top: 20rpx;
+
+  width: 100%;
+  height: 80rpx;
+}
+
+.category-item .name {
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin-left: 20rpx;
+}
+
+.category-item image {
+  width: 75rpx;
+  height: 75rpx;
+  margin-left: 20rpx;
+}
+
+.number {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  margin-right: 20rpx;
+}
+
+.amount {
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.percent {
+  font-size: 24rpx;
+}

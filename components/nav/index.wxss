@@ -1,1 +1,3 @@
-/* components/nav/index.wxss */
+.container{
+  background-color: white;
+}

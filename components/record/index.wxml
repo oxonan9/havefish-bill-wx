@@ -1,6 +1,6 @@
 <view class="container">
 	<text class="date">{{data.date}} 支出：-{{data.consume}}，收入：+{{data.income}}</text>
-	<view class="item-container" wx:for="{{data.list}}" wx:key="index">
+	<view class="item-container" wx:for="{{data.items}}" wx:key="*this">
 		<record-item data="{{item}}" />
 	</view>
 

@@ -1,13 +1,17 @@
 <view class="container">
 	<view class="readySave">
-		<image class="ready-img" src="{{readyObj.image}}"></image>
+		<view class="ready-image" style="background-color: #efecfd">
+			<image class="ready-img" src="{{readyObj.image}}"></image>
+		</view>
 		<text class="ready-title">{{readyObj.text}}</text>
-		<l-input l-input-class="l-input-class" class="amount" bind:linconfirm="onPost" bind:linblur="onPost" type="digit" maxlength="10" hide-label showRow="{{false}}" placeholder="88.88" />
+		<l-input l-input-class="l-input-class" class="amount" bind:linconfirm="onPost" bind:linblur="onPost" type="digit"
+			maxlength="10" hide-label showRow="{{false}}" placeholder="88.88" />
 	</view>
 
 	<view class="grid">
 		<van-grid column-num="4" border="{{ false }}">
-			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" wx:key="id" data-index="{{index}}" data-id="{{item.id}}" clickable bind:click="onClick">
+			<van-grid-item custom-class="custom-class" use-slot wx:for="{{ grids }}" wx:for-item="item" wx:key="id"
+				data-index="{{index}}" data-id="{{item.id}}" clickable bind:click="onClick">
 				<view class="haha" style="background-color: #efecfd">
 					<image style="width: 60rpx; height: 60rpx;" src="{{item.image}}" />
 				</view>

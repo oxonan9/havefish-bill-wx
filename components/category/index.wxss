@@ -32,10 +32,21 @@
 }
 
 
+.ready-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  margin-left: 40rpx;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .ready-img {
   width: 60rpx;
   height: 60rpx;
-  margin-left: 40rpx;
 }
 
 .ready-title {

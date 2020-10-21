@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: "http://112.126.82.110/"
+  baseUrl: "http://localhost:8080/"
 }
 
 export {
