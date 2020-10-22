@@ -1,2 +1,50 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+
+  <l-avatar class="avatar" open-data="{{['userAvatarUrl','userNickName']}}" size="160" placement="bottom" />
+
+  <view class="tip">
+    <image class="tip-image" src="/images/budget.png"></image>
+    <text class="tip-text">您已经记账{{33}}天</text>
+  </view>
+
+  <view class="main">
+    <text class="main-text">常用功能</text>
+
+    <view class="grid">
+
+
+      <view class="item">
+        <image src="/images/account/game.png"></image>
+        <text>预算中心</text>
+      </view>
+
+      <view class="item">
+        <image src="/images/account/fruit.png"></image>
+        <text>存一笔钱</text>
+      </view>
+
+      <view class="item">
+        <image src="/images/account/children.png"></image>
+        <text>关于懒橙</text>
+      </view>
+
+      <view class="item">
+        <image src="/images/account/plane.png"></image>
+        <text>懒橙社区</text>
+      </view>
+
+      <view class="item">
+        <image src="/images/account/education.png"></image>
+        <text>分享懒橙</text>
+      </view>
+
+      <view class="item">
+        <image src="/images/account/education.png"></image>
+        <text>分享懒橙</text>
+      </view>
+    </view>
+  </view>
+
+
+
+</view>

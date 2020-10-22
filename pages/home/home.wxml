@@ -1,28 +1,28 @@
-<!-- <view class="nav">
+<view class="nav">
 	<v-nav />
-</view> -->
+</view>
 <view class='wraper'>
 	<view class='header'>
-		<!-- <view class="header-image">
+		<view class="header-image">
 			<image src="/images/fenxi.png"></image>
-			<image src="/images/budget.png"></image>
-			<image src="/images/setting.png"></image>
-		</view> -->
-		<view class="header-title-date">
-			<view class="header-date" bind:tap="onSelectDate">
-				<l-popup class="popup" show="{{show_popup}}" animation="hide" content-align="bottom">
-					<van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
-						max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
-				</l-popup>
-				<text>{{showDate}}</text>
-				<image src="/images/arrow.png"></image>
+			<!-- <image src="/images/budget.png"></image>
+			<image src="/images/setting.png"></image> -->
+			<view class="header-title-date">
+				<view class="header-date" bind:tap="onSelectDate">
+					<l-popup class="popup" show="{{show_popup}}" animation="hide" content-align="bottom">
+						<van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
+							max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
+					</l-popup>
+					<text>{{showDate}}</text>
+					<!-- <image src="/images/arrow.png"></image> -->
+				</view>
 			</view>
 		</view>
 
 		<view class="header-amount">
 			<view class="income">
 				<text class="income-amount">{{recordAmount.income}}</text>
-					<text class="income-text">收入</text>
+				<text class="income-text">收入</text>
 			</view>
 			<image class="sift" src="/images/sift.png"></image>
 			<view class="consume">
@@ -35,6 +35,4 @@
 	<view class="main">
 		<record wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
 	</view>
-
-	<image bind:tap="onGoTally" class="add" src="/images/edit.png"></image>
 </view>

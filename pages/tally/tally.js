@@ -3,9 +3,10 @@ import {
 } from '../../models/record.js'
 
 import {
-  formatTime
+  Util
 } from '../../utils/utils.js'
 const recordModel = new RecordModel()
+const util = new Util()
 let consume_grids = [{
     id: 1,
     image: "/images/account/eat.png",
@@ -39,26 +40,16 @@ let consume_grids = [{
     image: "/images/account/children.png",
     text: "小孩"
   },
-  // {
-  //   id: 9,
-  //   image: "/images/account/gift.png",
-  //   text: "送礼"
-  // },
-  // {
-  //   id: 10,
-  //   image: "/images/account/pet.png",
-  //   text: "宠物"
-  // },
-  // {
-  //   id: 11,
-  //   image: "/images/account/skin.png",
-  //   text: "护肤"
-  // },
-  // {
-  //   id: 12,
-  //   image: "/images/account/phone.png",
-  //   text: "通讯"
-  // }
+  {
+    id: 9,
+    image: "/images/account/gift.png",
+    text: "送礼"
+  },
+  {
+    id: 10,
+    image: "/images/account/pet.png",
+    text: "宠物"
+  }
 ];
 let income_grids = [{
   id: 13,
@@ -97,16 +88,18 @@ Page({
   data: {
     show_popup: false, //是否显示弹框
     show_message: false, //显示消息提示
-    maxDate: new Date().getTime(),
-    minDate: new Date(2019, 10, 1).getTime(),
-    currentDate: new Date().getTime(),
+    maxDate: new Date().getTime(), //最大日期
+    minDate: new Date(2019, 10, 1).getTime(), //最小日期
+    currentDate: new Date().getTime(), //当前日期
     consume_grids: consume_grids, //支出宫格集合
     income_grids: income_grids, //收入宫格集合
-    showDate: formatTime(new Date()),
-    amount: 0,
-    remark: "", //备注
-    categoryId: 1, //分类id 
-    type: 0 //0-支出 1-收入
+    // showDate: formatTime(new Date()), //显示的日期
+    showDate: "今天",
+
+    bookkeep: {
+      num: 0
+    }
+
   },
 
   onPopupPicker() {
@@ -118,7 +111,7 @@ Page({
   onConfirm(event) {
     this.setData({
       show_popup: false,
-      showDate: formatTime(new Date(event.detail))
+      showDate: util.dateFormat("mm-dd", new Date(event.detail))
     })
   },
 
@@ -148,12 +141,6 @@ Page({
   onSelect(event) {
     this.setData({
       categoryId: event.detail
-    })
-  },
-
-  getAmount(event) {
-    this.setData({
-      amount: event.detail
     })
   },
 
@@ -188,54 +175,87 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
 
+  /**
+   * 点击键盘上的数字
+   */
+  tapKey(event) {
+    let key = event.currentTarget.dataset.key; //获取点击的数字 
+    let num = this.data.bookkeep.num; //获取当前数值
+    let hasDot = this.data.hasDot; //获取是否有无小数点
+
+    num = Number(num + key)
+    if (num < 100000000) {
+      num = "" + Math.floor(num * 100) / 100; //保留两位小数
+      if (key == '.') {
+        if (hasDot) return; //防止用户多次输入小数点
+        num = num + "."
+        this.setData({
+          hasDot: true
+        })
+      }
+    } else if (num > 10000000) {
+      wx.showToast({
+        title: '能花这么多？我不信😝',
+        icon: "none"
+      })
+      return;
+    } else if (isNaN(num)) {
+      //格式错误
+      return;
+    }
+    this.setData({
+      'bookkeep.num': num == '0' ? key : num
+    })
   },
 
   /**
-   * 生命周期函数--监听页面显示
+   * 点击退格
    */
-  onShow: function () {
+  tapDel() {
+    let num = "" + this.data.bookkeep.num; //转为字符串，因为要用到字符串的截取方法
 
+    if (num == '0') {
+      return;
+    }
+
+    if (num.charAt(num.length - 1) == '.') {
+      this.setData({
+        hasDot: false //不设置false无法再次输入小数点
+      })
+    }
+
+    this.setData({
+      'bookkeep.num': num.length == 1 ? '0' : num.substring(0, num.length - 1)
+    })
   },
 
   /**
-   * 生命周期函数--监听页面隐藏
+   * 点击日期
    */
-  onHide: function () {
+  tapDate() {
+    console.log("日期")
 
+    this.setData({
+      show_popup: true
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  longpressDel() {
+    this.tapDel();
+    this.setData({
+      interval: setInterval(() => {
+        console.log(123)
+        this.tapDel();
+      }, 100)
+    })
+    return;
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
+  stopInterval() {
+    clearInterval(this.data.interval)
+  }
 
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
 
 
 })

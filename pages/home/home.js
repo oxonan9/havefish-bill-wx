@@ -17,7 +17,7 @@ Page({
     show_popup: false,
     currentDate: new Date().getTime(),
     maxDate: new Date().getTime(),
-    showDate: formatTime(new Date(), "yyyy-MM"),
+    // showDate: formatTime(new Date(), "yyyy-MM"),
     dataList: [],
 
     start: 0,
@@ -31,7 +31,7 @@ Page({
   },
 
   onGoTally() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/tally/tally',
     })
   },
@@ -44,7 +44,7 @@ Page({
   onConfirm(event) {
     this.setData({
       currentDate: new Date(event.detail).getTime(),
-      showDate: formatTime(new Date(event.detail), "yyyy-MM"),
+      // showDate: formatTime(new Date(event.detail), "yyyy-MM"),
       show_popup: false
     })
     this._getRecordList(this.data.start, this.data.count, this.data.showDate)

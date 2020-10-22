@@ -1,1 +1,74 @@
-/* pages/my/my.wxss */
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar {
+  margin-top: 80rpx;
+}
+
+.tip {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 400rpx;
+  height: 100rpx;
+  background-color: whitesmoke;
+  border-radius: 10px;
+}
+
+.tip-image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.tip-text {
+  color: #333333;
+  font-size: 32rpx;
+  margin-left: 20rpx;
+}
+
+.main {
+  width: 100%;
+  margin-top: 80rpx;  
+}
+
+.main-text {
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.grid image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.item {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 20rpx;
+  padding: 30rpx;
+
+  border-radius: 10px;
+  background-color: whitesmoke;
+}
+
+.item text {
+  margin-top: 10rpx;
+}

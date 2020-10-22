@@ -1,16 +1,22 @@
-.container {}
+.container {
+  width: 100%;
+  height: 600rpx;
+  margin-top: 30rpx;
+}
 
 .haha {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 10rpx;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+
+  background-color: whitesmoke;
 }
 
-.custom-class {}
 
 .category-name {
   margin-top: 10rpx;
@@ -19,12 +25,12 @@
 }
 
 .readySave {
-  width: 660rpx;
+  width: 100%;
   height: 120rpx;
-  margin: 20rpx auto;
+  margin-top: 20rpx;
   background-color: #fff;
-  border-radius: 10px 10px 10px 10px;
-  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100);
+  /* border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100); */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,9 +71,9 @@
 
 
 .grid {
-  width: 660rpx;
-  margin: 20rpx auto;
+  width: 100%;
+  /* margin: 20rpx auto; */
   background-color: #fff;
-  border-radius: 10px 10px 10px 10px;
-  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100);
+  /* border-radius: 10px 10px 10px 10px;
+  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100); */
 }

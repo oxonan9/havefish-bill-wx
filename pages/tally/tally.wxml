@@ -1,6 +1,5 @@
 <l-message />
 <view class="wrapper">
-
 	<l-tabs l-class-header="tabs" animated-for-line bind:linchange="onChangeTab">
 		<l-tabpanel tab="支出" key="one" slot="one">
 			<view class="tab-content">
@@ -14,24 +13,53 @@
 		</l-tabpanel>
 	</l-tabs>
 
-	<view class="remark-container">
-		<image src="/images/remark.png"></image>
-		<l-input hide-label bind:linconfirm="onSetRemark" placeholder="写个备注..." showRow="{{false}}" />
-	</view>
+	<!-- 自定义数字键盘 -->
+	<view class="keyboard">
+		<view class='keyboard-head'>
+			<text>备注:</text>
+			<l-input l-input-class="l-input-class" hide-label="{{true}}" class="remark" bind:linconfirm="onSetRemark"
+				placeholder="写个备注..." showRow="{{false}}" />
+			<text class="amount">{{bookkeep.num}}</text>
+		</view>
 
-	<view class="date-container">
-		<image src="/images/date.png"></image>
-		<text class="date" bind:tap="onPopupPicker">{{showDate}}</text>
-	</view>
-
-	<l-popup show="{{show_popup}}" content-align="bottom" animation="hide">
-		<!-- // bind:input="onInput" -->
-		<van-datetime-picker type="datetime" title="选择完整时间" value="{{currentDate}}" min-date="{{minDate}}"
-			max-date="{{maxDate}}" bind:cancel="onCancelPopup" bind:confirm="onConfirm" />
-	</l-popup>
-
-	<view class="save-container" bind:tap="onSave">
-		<text>保存</text>
+		<view class='keyboard-row'>
+			<view class='key one' hover-class="weui-cell_active" data-key='1' bindtap='tapKey'>1</view>
+			<view class='key two' hover-class="weui-cell_active" data-key='2' bindtap='tapKey'>2</view>
+			<view class='key three' hover-class="weui-cell_active" data-key='3' bindtap='tapKey'>3</view>
+			<view class='key del' hover-class="weui-cell_active" bindtap='tapDate' bindlongpress="longpressDel"
+				bindtouchend="clearDelInterval">
+				<l-popup class="popup" show="{{show_popup}}" animation="hide" content-align="top">
+					<van-datetime-picker item-height="44" visible-item-count="5" type="date" value="{{ currentDate }}"
+						max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
+				</l-popup>
+				<text>{{showDate}}</text>
+			</view>
+		</view>
+		<view class="keyboard-bottom3">
+			<view class="keyboard-bottom3-num">
+				<view class='keyboard-row'>
+					<view class='key four' hover-class="weui-cell_active" data-key='4' bindtap='tapKey'>4</view>
+					<view class='key five' hover-class="weui-cell_active" data-key='5' bindtap='tapKey'>5</view>
+					<view class='key six' hover-class="weui-cell_active" data-key='6' bindtap='tapKey'>6</view>
+				</view>
+				<view class='keyboard-row'>
+					<view class='key seven' hover-class="weui-cell_active" data-key='7' bindtap='tapKey'>7</view>
+					<view class='key eight' hover-class="weui-cell_active" data-key='8' bindtap='tapKey'>8</view>
+					<view class='key nine' hover-class="weui-cell_active" data-key='9' bindtap='tapKey'>9</view>
+				</view>
+				<view class='keyboard-row'>
+					<!-- <view class='key flex2 zero' hover-class="weui-cell_active" data-key='0' bindtap='tapKey'>0</view> -->
+					<view class='key nine' hover-class="weui-cell_active" data-key='0' bindtap='tapKey'>0</view>
+					<view class='key nine' hover-class="weui-cell_active" data-key='.' bindtap='tapKey'>.</view>
+					<view class='key dot' hover-class="weui-cell_active" data-key='.' bindtap='tapDel'
+						bindlongpress="longpressDel" bindtouchend="stopInterval">
+						<!-- <image class="del-image" src="/images/left-arrow.png" mode="aspectFill"></image> -->
+						退格
+					</view>
+				</view>
+			</view>
+			<view class='key submit' hover-class="weui-cell_active" bindtap='tapSubmit'>确定</view>
+		</view>
 	</view>
 
 </view>

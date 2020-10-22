@@ -1,4 +1,7 @@
-/* pages/tally/tally.wxss */
+page {
+  background-color: white;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -12,6 +15,8 @@
 }
 
 .tab-content {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   border-bottom: 0px !important;
 }
@@ -19,39 +24,6 @@
 .tabs {
   width: 500rpx;
   margin: 0 auto;
-}
-
-.readySave {
-  width: 660rpx;
-  height: 120rpx;
-  margin: 20rpx auto;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px 0px rgba(245, 245, 245, 100);
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-}
-
-
-.ready-img {
-  width: 80rpx;
-  height: 80rpx;
-  margin-left: 40rpx;
-}
-
-.ready-title {
-  margin-left: 40rpx;
-}
-
-.ready-amount {
-  position: absolute;
-  right: 40rpx;
-  font-weight: bold;
-  font-size: 36rpx;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .popup {
@@ -108,4 +80,120 @@
   line-height: 28rpx;
   font-weight: 800;
   letter-spacing: 2px;
+}
+
+
+
+/* 自定义数字键盘 */
+.keyboard {
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  background: #F6F6F6;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.key {
+  width: calc((100vw - 30rpx - 60rpx)/4);
+  box-sizing: border-box;
+  background: wheat;
+  border-radius: 10px;
+  line-height: 90rpx;
+  height: 90rpx;
+}
+
+.key.flex2 {
+  width: calc((100vw - 30rpx - 40rpx)/2);
+}
+
+/* 底部3层键盘 */
+.keyboard-bottom3 {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  text-align: center;
+}
+
+/* 底部3层左侧数字键盘 */
+.keyboard-bottom3-num {
+  flex: 3;
+  margin-right: 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+/* 键盘每行 */
+.keyboard-row {
+  flex: 1;
+  width: 100%;
+  /* border-radius: 98rpx; */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+
+/* 底部按钮margin清0 */
+.zero,
+.dot,
+.submit {
+  margin-bottom: 0;
+}
+
+/* 退格按钮图片 */
+.del {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.del image {
+  width: 44rpx;
+  height: 32rpx;
+}
+
+/* 确定按钮文字居中 */
+.submit {
+  background: #f2d053;
+  color: #FFFFFF;
+  height: 294rpx;
+  line-height: 294rpx;
+}
+
+.keyboard-head {
+  /* border: 1px wheat solid; */
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 20rpx;
+  margin-bottom: 15rpx;
+  position: relative;
+}
+
+.l-input-class {
+  text-align: left;
+}
+
+.amount {
+  position: absolute;
+  right: 0;
+  margin-right: 20rpx;
+}
+
+.del-image {
+  width: 60rpx;
+  height: 60rpx;
 }

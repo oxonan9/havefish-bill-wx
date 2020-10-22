@@ -98,6 +98,12 @@
           "pathName": "pages/assay/assay",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/my/my",
+          "pathName": "pages/my/my",
+          "query": "",
+          "scene": null
         }
       ]
     }
