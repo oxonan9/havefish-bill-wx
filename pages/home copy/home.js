@@ -66,22 +66,19 @@ Page({
 
 
 
-  async _getRecordList(page, count, date) {
-    console.log(page, count, date)
+  async _getRecordList(start, count, date) {
+    // console.log(start, count, date)
     let dataList = this.data.dataList;
-    let data = await BillModel.getRecordList(page, count, date);
+    let data = await BillModel.getRecordList(start, count, date);
     let items = data.items;
-    console.log(dataList)
-    if (page == 0) {
+    if (this.data.page == 0) {
       dataList = items
     } else {
-      //下拉刷新时，如果当前最后一条数据与新数据的日期相同，进行合并，不然会出现重复日期的问题
       for (let i in items) {
         if (items[i].date == dataList[dataList.length - 1].date) {
           dataList[dataList.length - 1].items = dataList[dataList.length - 1].items.concat(items[i].items)
         } else {
-          console.log("211212")
-          dataList.push(items[i])
+          dataList.push(items)
         }
       }
     }

@@ -4,12 +4,11 @@
   margin-top: 30rpx;
 }
 
-.haha {
+.grid-item {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   width: 80rpx;
   height: 80rpx;
   border-radius: 10rpx;
@@ -17,8 +16,12 @@
   background-color: whitesmoke;
 }
 
+.grid-image {
+  width: 60rpx;
+  height: 60rpx;
+}
 
-.category-name {
+.grid-text {
   margin-top: 10rpx;
   font-size: 24rpx;
   color: #333333;

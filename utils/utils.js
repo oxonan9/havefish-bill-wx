@@ -1,5 +1,5 @@
 class Util {
-   dateFormat(fmt, date) {
+  static dateFormat(fmt, date) {
     let ret;
     const opt = {
       "Y+": date.getFullYear().toString(), // 年

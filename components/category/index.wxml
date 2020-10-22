@@ -1,15 +1,15 @@
 <view class="container">
 
-	<scroll-view scroll-y="{{true}}">  
+	<scroll-view scroll-y="{{true}}">
 		<view class="grid">
 			<l-grid row-num="5">
-				<block wx:for="{{ grids }}" wx:for-item="item" wx:key="id">
+				<block wx:for="{{ grids }}" wx:key="id">
 					<l-grid-item key="{{item.id}}" slot="{{item.id}}" data-index="{{index}}" data-id="{{item.id}}"
-						bind:click="onClick">
-						<view class="haha">
-							<image style="width: 60rpx; height: 60rpx;" src="{{item.image}}" />
+						bind:linitemtap="onTap">
+						<view class="grid-item" style="background-color:{{selectedId==item.id?'#f2d053':'whitesmoke'}}">
+							<image class="grid-image" src="{{item.image}}" />
 						</view>
-						<text class="category-name">{{item.text}}</text>
+						<text class="grid-text">{{item.text}}</text>
 					</l-grid-item>
 				</block>
 			</l-grid>

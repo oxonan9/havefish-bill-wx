@@ -1,12 +1,9 @@
 import {
-  RecordModel
-} from '../../models/record.js'
-
+  BillModel
+} from '../../models/bill.js'
 import {
   Util
 } from '../../utils/utils.js'
-const recordModel = new RecordModel()
-const util = new Util()
 let consume_grids = [{
     id: 1,
     image: "/images/account/eat.png",
@@ -85,6 +82,7 @@ let income_grids = [{
   text: "礼金"
 }, ];
 Page({
+
   data: {
     show_popup: false, //是否显示弹框
     show_message: false, //显示消息提示
@@ -93,38 +91,44 @@ Page({
     currentDate: new Date().getTime(), //当前日期
     consume_grids: consume_grids, //支出宫格集合
     income_grids: income_grids, //收入宫格集合
-    // showDate: formatTime(new Date()), //显示的日期
     showDate: "今天",
 
-    bookkeep: {
-      num: 0
+    bill: {
+      num: 0, //金额
+      type: 0, //类型 0-支出  1-收入
+      categoryId: 1, //分类id
+      remark: '嗯呐', //备注
+      date: Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date()) //日期
     }
 
   },
 
-  onPopupPicker() {
-    this.setData({
-      show_popup: true
-    })
-  },
-
-  onConfirm(event) {
+  /**
+   *  确认日期
+   */
+  onConfirmDate(event) {
     this.setData({
       show_popup: false,
-      showDate: util.dateFormat("mm-dd", new Date(event.detail))
+      showDate: Util.dateFormat("mm-dd", new Date(event.detail)),
+      'bill.date': Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date(event.detail)),
     })
   },
 
-  onSetRemark(event) {
-    this.setData({
-      remark: event.detail.value
-    })
-  },
 
   //取消弹框
   onCancelPopup() {
     this.setData({
       show_popup: false
+    })
+  },
+
+
+  /**
+   * 确认备注
+   */
+  onConfirmRemark(event) {
+    this.setData({
+      'bill.remark': event.detail.value
     })
   },
 
@@ -140,30 +144,10 @@ Page({
   //选择分类 
   onSelect(event) {
     this.setData({
-      categoryId: event.detail
+      'bill.categoryId': event.detail
     })
   },
 
-  onSave() {
-    if (this.data.amount == 0) {
-      wx.showToast({
-        title: '😝花了多少钱写一下吧~',
-        icon: "none"
-      })
-      return;
-    }
-    recordModel.saveRecord({
-      "category_id": this.data.categoryId,
-      "type": this.data.type,
-      "amount": this.data.amount,
-      "remark": this.data.remark,
-      "record_time": this.data.showDate
-    }).then(res => {
-      wx.switchTab({
-        url: '/pages/home/home',
-      })
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -175,13 +159,53 @@ Page({
 
   },
 
+  onHide() {
+
+  },
+
+  /**
+   * 保存账单
+   */
+  async tapSubmit() {
+    let bill = this.data.bill;
+    if (bill.num == '0') {
+      wx.showToast({
+        title: '😝花了多少钱写一下吧~',
+        icon: "none"
+      })
+      return;
+    }
+    await BillModel.saveRecord({
+      "amount": bill.num,
+      "type": bill.type,
+      "category_id": bill.categoryId,
+      "remark": bill.remark,
+      "record_time": bill.date
+    }).then(res => {
+      wx.lin.showToast({
+        title: '记账成功~奥利给!',
+        icon: 'success'
+      })
+      setTimeout(() => {
+        wx.navigateBack({
+          url: '/pages/home/home',
+          success: () => {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            page.onLoad();
+          }
+        })
+      }, 1000);
+    });
+  },
+
 
   /**
    * 点击键盘上的数字
    */
   tapKey(event) {
     let key = event.currentTarget.dataset.key; //获取点击的数字 
-    let num = this.data.bookkeep.num; //获取当前数值
+    let num = this.data.bill.num; //获取当前数值
     let hasDot = this.data.hasDot; //获取是否有无小数点
 
     num = Number(num + key)
@@ -205,7 +229,7 @@ Page({
       return;
     }
     this.setData({
-      'bookkeep.num': num == '0' ? key : num
+      'bill.num': num == '0' ? key : num
     })
   },
 
@@ -213,7 +237,7 @@ Page({
    * 点击退格
    */
   tapDel() {
-    let num = "" + this.data.bookkeep.num; //转为字符串，因为要用到字符串的截取方法
+    let num = "" + this.data.bill.num; //转为字符串，因为要用到字符串的截取方法
 
     if (num == '0') {
       return;
@@ -226,7 +250,7 @@ Page({
     }
 
     this.setData({
-      'bookkeep.num': num.length == 1 ? '0' : num.substring(0, num.length - 1)
+      'bill.num': num.length == 1 ? '0' : num.substring(0, num.length - 1)
     })
   },
 
@@ -252,9 +276,12 @@ Page({
     return;
   },
 
+  /**
+   * 停止循环
+   */
   stopInterval() {
     clearInterval(this.data.interval)
-  }
+  },
 
 
 

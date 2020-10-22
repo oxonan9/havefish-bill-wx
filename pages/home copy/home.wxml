@@ -9,18 +9,19 @@
 <view class='wraper'>
 	<view class='header'>
 		<view class="header-image">
-			<!-- <image src="/images/fenxi.png"></image> -->
+			<image src="/images/fenxi.png"></image>
 			<!-- <image src="/images/budget.png"></image>
 			<image src="/images/setting.png"></image> -->
-			<view class="header-date" bind:tap="onSelectDate">
-				<l-tag size="large" shape="circle" plain="{{true}}" font-color="#E6CEAC">{{showDate}}</l-tag>
-				<!-- <text class="date">{{showDate}}</text> -->
-				<!-- <image src="/images/arrow.png"></image> -->
+			<view class="header-title-date">
+				<view class="header-date" bind:tap="onSelectDate">
+					<text class="date">{{showDate}}</text>
+					<!-- <image src="/images/arrow.png"></image> -->
+				</view>
 			</view>
 		</view>
 
 		<view class="header-amount">
-			<!-- <view class="income">
+			<view class="income">
 				<text class="income-amount">{{recordAmount.income}}</text>
 				<text class="income-text">收入</text>
 			</view>
@@ -30,31 +31,7 @@
 			<view class="consume">
 				<text class="consume-amount">{{recordAmount.consume}}</text>
 				<text class="consume-text">支出</text>
-			</view> -->
-			<view class="left">
-				<text class="tip-text1">本月支出</text>
-				<view class="left-tip1">
-					<text class="">¥</text>
-					<text class="tip-consume">{{recordAmount.consume}}</text>
-				</view>
-				<view class="left-tip2">
-					<text class="tip-text">本月收入</text>
-					<text class="tip-income">{{recordAmount.income}}</text>
-				</view>
-
 			</view>
-
-			<view class="right">
-				<view>
-					<text class="tip-text">剩余预算</text>
-					<text class="tip-income">{{88.00}}</text>
-				</view>
-				<view>
-					<text class="tip-text">本月结余</text>
-					<text class="tip-income">{{88.00}}</text>
-				</view>
-			</view>
-
 		</view>
 	</view>
 

@@ -12,6 +12,7 @@ Component({
    */
   data: {
     readyObj: {},
+    selectedId: 1,
     amount: 0
   },
 
@@ -19,11 +20,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onClick(event) {
+    onTap(event) {
       this.setData({
-        readyObj: this.properties.grids[event.currentTarget.dataset.index]
+        selectedId: event.currentTarget.dataset.id
       })
-      this.triggerEvent('select', this.data.readyObj.id, {})
+      this.triggerEvent('select', this.data.selectedId, {})
     },
 
     onPost(event) {

@@ -1,5 +1,5 @@
 const config = {
-  baseUrl: "https://localhost:8080/"
+  baseUrl: "https://www.ygzb.xyz/api/"
 }
 
 export {

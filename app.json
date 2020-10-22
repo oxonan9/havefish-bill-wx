@@ -8,14 +8,17 @@
     "l-popup": "/miniprogram_npm/lin-ui/popup/index",
     "l-grid": "/miniprogram_npm/lin-ui/grid/index",
     "l-grid-item": "/miniprogram_npm/lin-ui/grid-item/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
     "l-input": "/miniprogram_npm/lin-ui/input/index",
     "l-loading": "/miniprogram_npm/lin-ui/loading/index",
     "l-message": "/miniprogram_npm/lin-ui/message/index",
     "l-segment": "/miniprogram_npm/lin-ui/segment/index",
     "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
-    "l-tag": "/miniprogram_npm/lin-ui/tag/index"
+    "l-tag": "/miniprogram_npm/lin-ui/tag/index",
+    "l-toast": "/miniprogram_npm/lin-ui/toast/index",
+    "l-status-show": "/miniprogram_npm/lin-ui//status-show/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
+
   },
   "pages": [
     "pages/home/home",
@@ -34,7 +37,7 @@
         "selectedIconPath": "/images/home_hl.png"
       },
       {
-        "pagePath": "pages/tally/tally",
+        "pagePath": "pages/my/my",
         "iconPath": "/images/edit.png",
         "selectedIconPath": "/images/edit.png"
       },

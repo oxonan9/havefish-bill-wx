@@ -1,42 +1,47 @@
 import {
   config
 } from '../config.js'
-class HTTP {
+class Http {
 
-  async request({
+  static async request({
     url,
     method = "GET",
     data = {}
   }) {
-    const res = await this._request(url, method, data)
+    const res = await Http._request(url, method, data)
     return res.data
   }
 
-  _request(url, method = "GET", data = {}) {
+  static _request(url, method = "GET", data = {}) {
     return new Promise((resolve, reject) => {
       wx.request({
         url: config.baseUrl + url,
         method: method,
         data: data,
         success: (res) => {
-          resolve(res)
+          //只有2开头才是操作成功  小程序规定即使是404、500也会走success，除非网络错误
+          if (res.statusCode.toString().startsWith("2")) {
+            resolve(res)
+          }else{
+            Http._showError("资源找不到或者服务器出现异常~");
+          }
         },
         fail: (error) => {
           reject()
-          this._showError("抱歉，服务器可能开小差了")
+          Http._showError("抱歉，服务器可能开小差了~")
         }
       })
     })
   }
 
-  _showError(msg) {
-    // wx.lin.showMessage({
-    //   content: msg,
-    //   type: 'error',
-    // })
+  static _showError(msg) {
+    wx.lin.showMessage({
+      content: msg,
+      type: 'error',
+    })
   }
 }
 
 export {
-  HTTP
+  Http
 }
