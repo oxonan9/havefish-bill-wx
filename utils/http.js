@@ -22,22 +22,22 @@ class Http {
           //只有2开头才是操作成功  小程序规定即使是404、500也会走success，除非网络错误
           if (res.statusCode.toString().startsWith("2")) {
             resolve(res)
-          }else{
-            Http._showError("资源找不到或者服务器出现异常~");
+          } else {
+            Http._showError("资源找不到或者服务器异常");
           }
         },
         fail: (error) => {
-          reject()
-          Http._showError("抱歉，服务器可能开小差了~")
+          reject(error);
+          Http._showError("抱歉，服务器可能开小差了")
         }
       })
     })
   }
 
   static _showError(msg) {
-    wx.lin.showMessage({
-      content: msg,
-      type: 'error',
+    wx.showToast({
+      title: msg,
+      icon: "none"
     })
   }
 }

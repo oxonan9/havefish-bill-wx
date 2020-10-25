@@ -6,7 +6,7 @@
 				<block wx:for="{{ grids }}" wx:key="id">
 					<l-grid-item key="{{item.id}}" slot="{{item.id}}" data-index="{{index}}" data-id="{{item.id}}"
 						bind:linitemtap="onTap">
-						<view class="grid-item" style="background-color:{{selectedId==item.id?'#f2d053':'whitesmoke'}}">
+						<view class="grid-item" style="background-color:{{selectedId==item.id?'#bfd9d3':'whitesmoke'}}">
 							<image class="grid-image" src="{{item.image}}" />
 						</view>
 						<text class="grid-text">{{item.text}}</text>

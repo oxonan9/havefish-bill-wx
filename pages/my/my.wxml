@@ -10,39 +10,38 @@
   <view class="main">
     <text class="main-text">常用功能</text>
 
-    <view class="grid">
+    <l-grid l-class="grid" col-num="3">
 
-
-      <view class="item">
+      <l-grid-item l-grid-item-class="item" key="one" slot="one" bindtap="onGoBudget">
         <image src="/images/account/game.png"></image>
         <text>预算中心</text>
-      </view>
+      </l-grid-item>
 
-      <view class="item">
+      <l-grid-item l-grid-item-class="item" key="two" slot="two">
         <image src="/images/account/fruit.png"></image>
         <text>存一笔钱</text>
-      </view>
+      </l-grid-item>
 
-      <view class="item">
+      <l-grid-item l-grid-item-class="item" key="three" slot="three">
         <image src="/images/account/children.png"></image>
         <text>关于懒橙</text>
-      </view>
+      </l-grid-item>
 
-      <view class="item">
+      <l-grid-item l-grid-item-class="item" key="four" slot="four">
         <image src="/images/account/plane.png"></image>
         <text>懒橙社区</text>
-      </view>
+      </l-grid-item>
 
-      <view class="item">
+      <l-grid-item l-grid-item-class="item" key="five" slot="five">
         <image src="/images/account/education.png"></image>
         <text>分享懒橙</text>
-      </view>
+      </l-grid-item>
 
-      <view class="item">
+      <l-grid-item l-grid-item-class="item" key="six" slot="six">
         <image src="/images/account/education.png"></image>
         <text>分享懒橙</text>
-      </view>
-    </view>
+      </l-grid-item>
+    </l-grid>
   </view>
 
 

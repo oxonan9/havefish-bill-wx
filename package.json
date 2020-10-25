@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@vant/weapp": "^1.5.1",
     "coolui-scroller": "^2.0.1",
     "lin-ui": "^0.8.9"
   }

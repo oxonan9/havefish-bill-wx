@@ -93,14 +93,17 @@ Page({
     income_grids: income_grids, //收入宫格集合
     showDate: "今天",
 
+    selectedId: 1,
     bill: {
       num: 0, //金额
       type: 0, //类型 0-支出  1-收入
       categoryId: 1, //分类id
-      remark: '嗯呐', //备注
+      remark: '', //备注
       date: Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date()) //日期
-    }
+    },
 
+    a: 1,
+    b: 13
   },
 
   /**
@@ -134,17 +137,17 @@ Page({
 
   //切换标签  支出-收入
   onChangeTab(event) {
-    let categoryId = event.detail.currentIndex == 0 ? this.data.consume_grids[0].id : this.data.income_grids[0].id;
     this.setData({
-      type: event.detail.currentIndex,
-      categoryId
+      'bill.type': event.detail.currentIndex,
     })
   },
 
   //选择分类 
   onSelect(event) {
+    console.log(event.detail)
     this.setData({
-      'bill.categoryId': event.detail
+      'bill.categoryId': event.detail,
+      selectedId: event.detail
     })
   },
 
@@ -220,7 +223,7 @@ Page({
       }
     } else if (num > 10000000) {
       wx.showToast({
-        title: '能花这么多？我不信😝',
+        title: '啥家庭啊！！😝',
         icon: "none"
       })
       return;

@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "v-nav": "/components/nav/index",
     "ec-canvas": "../../ec-canvas/ec-canvas"
   },
   "navigationStyle": "custom",

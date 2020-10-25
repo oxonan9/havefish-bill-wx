@@ -14,6 +14,17 @@
 # 项目截图
 
 
+items[
+
+    {
+        categoryId:1
+        name:"三餐"
+        amount:"18888"
+        percent:"50"
+    }
+
+]
+
 
 
 record

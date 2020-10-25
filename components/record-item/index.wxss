@@ -5,10 +5,21 @@
   width: 100%;
 }
 
-.item-image {
+.grid-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 40rpx;
   width: 80rpx;
   height: 80rpx;
-  margin-left: 40rpx;
+  border-radius: 10rpx;
+  background-color: whitesmoke;
+}
+
+.item-image {
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .item-title {

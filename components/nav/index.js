@@ -26,7 +26,7 @@ Component({
       statusBarHeight,
     } = getApp().globalData
     this.setData({
-      statusBarHeight,
+      statusBarHeight: statusBarHeight * 2,
     })
   }
 })

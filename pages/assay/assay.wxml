@@ -1,48 +1,71 @@
 <view class="wrapper">
-  <view class="header">
-    <view class="year-month">
-      <text style="background-color:{{selected?selectedColor:unSelectedColor}}" class="year" bindtap="onTap">年份</text>
-      <text style="background-color:{{selected?unSelectedColor:selectedColor}}" class=" month" bindtap="onTap">月份</text>
+  <v-nav />
+  <view class='header'>
+    <view class="header-image">
+      <view class="header-date" bind:tap="onSelectDate">
+        <l-tag size="large" shape="circle" icon-color="#333333" plain="{{true}}" bg-color="#bfd9d3"
+          font-color="#333333">2020 | 10月</l-tag>
+      </view>
     </view>
-    <view class="date" bind:tap="onSelectDate">
-      <l-popup class="popup" show="{{false}}" animation="hide" content-align="bottom">
-        <van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
-          max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
-      </l-popup>
-      <text>2020-10</text>
-      <image src="/images/sift.png"></image>
+    <view class="header-amount">
+      <view class="left">
+        <text class="tip-text1">当月支出</text>
+        <view class="left-tip1">
+          <text class="">¥</text>
+          <text class="tip-consume">{{recordAmount.consume}}</text>
+        </view>
+        <view class="left-tip2">
+          <text class="tip-text">当月支出</text>
+          <text class="tip-income">{{recordAmount.income}}</text>
+        </view>
+      </view>
+
+      <view class="right">
+        <view>
+          <text class="tip-text">平均支出</text>
+          <text class="tip-income">{{recordAmount.budget}}</text>
+        </view>
+        <view>
+          <text class="tip-text">当月结余</text>
+          <text class="tip-income">{{recordAmount.balance}}</text>
+        </view>
+      </view>
+
     </view>
   </view>
-
   <view class="main">
-    <view class="container">
-      <text class="title">分类统计</text>
-      <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:tap="onTap"></ec-canvas>
-      <view class="category-item">
-        <image src="/images/add_hl.png"></image>
-        <text class="name">汽车</text>
-        <view class="number">
-          <text class="amount">168.00</text>
-          <text class="percent">3.45%</text>
-        </view>
-      </view>
-      <view class="category-item">
-        <image src="/images/add_hl.png"></image>
-        <text class="name">汽车</text>
-        <view class="number">
-          <text class="amount">168.00</text>
-          <text class="percent">3.45%</text>
-        </view>
-      </view>
-      <view class="category-item">
-        <image src="/images/add_hl.png"></image>
-        <text class="name">汽车</text>
-        <view class="number">
-          <text class="amount">168.00</text>
-          <text class="percent">3.45%</text>
-        </view>
-      </view>
+    <text class="title">收支走势</text>
+    <!-- <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:tap="onTap"></ec-canvas> -->
 
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+
+    <!-- <block wx:for="{{items}}">
+      <view class="category-item">
+        <view class="grid-item">
+          <image src="{{item.icon}}"></image>
+        </view>
+        <view class="middle">
+          <text class="name">{{item.name}}</text>
+          <l-progress l-class="progress" percent="{{item.percent}}"></l-progress>
+        </view>
+        <view class="number">
+          <text class="amount">{{item.amount}}</text>
+          <text class="percent">{{item.percent}}%</text>
+        </view>
+      </view>
+    </block> -->
+  </view>
+  <view class="footer">
+
+    <view class="footer-v footer-one-bg">
+      <text class="footer-text">消费预算</text>
+      <image class="footer-one-image" src="/images/progress.png"></image>
     </view>
+
+    <view class="footer-v footer-two-bg">
+      <text class="footer-text">消费方式</text>
+      <image class="footer-two-image" src="/images/progress@pie.png"></image>
+    </view>
+
   </view>
 </view>

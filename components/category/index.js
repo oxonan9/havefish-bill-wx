@@ -4,15 +4,14 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    grids: Array
+    grids: Array,
+    selectedId: Number
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    readyObj: {},
-    selectedId: 1,
     amount: 0
   },
 
@@ -32,8 +31,17 @@ Component({
     }
   },
   attached() {
-    this.setData({
-      readyObj: this.properties.grids[0]
-    })
+    console.log(this.data.selectedId)
+    // this.setData({
+    //   selectedId: this.data.grids[0].id
+    // })
+  },
+
+  moved() {
+    console.log("moved")
+  },
+
+  detached() {
+    console.log("detached")
   }
 })

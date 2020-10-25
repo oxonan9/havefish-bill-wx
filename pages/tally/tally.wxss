@@ -102,10 +102,10 @@ page {
 .key {
   width: calc((100vw - 30rpx - 60rpx)/4);
   box-sizing: border-box;
-  background: wheat;
+  background: #bfd9d3;
   border-radius: 10px;
-  line-height: 90rpx;
-  height: 90rpx;
+  line-height: 110rpx;
+  height: 110rpx;
 }
 
 .key.flex2 {
@@ -165,10 +165,10 @@ page {
 
 /* 确定按钮文字居中 */
 .submit {
-  background: #f2d053;
+  background: #bfd9d3;
   color: #FFFFFF;
-  height: 294rpx;
-  line-height: 294rpx;
+  height: 354rpx;
+  line-height: 354rpx;
 }
 
 .keyboard-head {

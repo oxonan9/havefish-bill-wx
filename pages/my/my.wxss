@@ -27,14 +27,15 @@
 }
 
 .tip-text {
-  color: #333333;
+  color: #bfd9d3;
   font-size: 32rpx;
   margin-left: 20rpx;
 }
 
 .main {
   width: 100%;
-  margin-top: 80rpx;  
+  margin-top: 80rpx;
+
 }
 
 .main-text {
@@ -43,12 +44,7 @@
   color: #999;
 }
 
-.grid {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
+.grid {}
 
 .grid image {
   width: 100rpx;
@@ -56,16 +52,12 @@
 }
 
 .item {
-
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
-
-  margin-top: 20rpx;
-  padding: 30rpx;
-
+  margin: 10rpx 30rpx;
   border-radius: 10px;
+  padding: 20rpx;
   background-color: whitesmoke;
 }
 

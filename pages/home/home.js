@@ -24,8 +24,8 @@ Page({
     count: 10,
 
     recordAmount: {
-      income: 0,
-      consume: 0
+      income: 0.00,
+      consume: 0.00
     }
   },
 
@@ -46,7 +46,7 @@ Page({
       showDate: Util.dateFormat("YYYY-mm", new Date(event.detail)),
       show_popup: false
     })
-    this._getRecordList(0, this.data.count, this.data.showDate)
+    this._initAllData();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -56,22 +56,22 @@ Page({
   },
 
   async _initAllData() {
-    this.data.page = 0;
     let recordAmount = await BillModel.getRecordAmount(this.data.showDate);
     this.setData({
       recordAmount
     })
-    this._getRecordList(this.data.page, this.data.count, this.data.showDate)
+    this._getRecordList(0, this.data.count, this.data.showDate)
   },
 
 
 
   async _getRecordList(page, count, date) {
-    console.log(page, count, date)
     let dataList = this.data.dataList;
-    let data = await BillModel.getRecordList(page, count, date);
+    let data = await BillModel.getRecordList(page, count, date).catch(err => {
+      console.log(err)
+    })
+    console.log(data)
     let items = data.items;
-    console.log(dataList)
     if (page == 0) {
       dataList = items
     } else {
@@ -80,7 +80,6 @@ Page({
         if (items[i].date == dataList[dataList.length - 1].date) {
           dataList[dataList.length - 1].items = dataList[dataList.length - 1].items.concat(items[i].items)
         } else {
-          console.log("211212")
           dataList.push(items[i])
         }
       }

@@ -1,9 +1,0 @@
-{
-  "usingComponents": {
-    "v-nav": "/components/nav/index",
-    "record": "/components/record/index"
-  },
-  "navigationBarTitleText": "记一笔",
-  "navigationStyle": "custom"
-
-}

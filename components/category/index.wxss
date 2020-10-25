@@ -12,7 +12,6 @@
   width: 80rpx;
   height: 80rpx;
   border-radius: 10rpx;
-
   background-color: whitesmoke;
 }
 

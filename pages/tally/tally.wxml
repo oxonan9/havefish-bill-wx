@@ -5,12 +5,12 @@
 	<l-tabs l-class-header="tabs" animated-for-line bind:linchange="onChangeTab">
 		<l-tabpanel tab="支出" key="one" slot="one">
 			<view class="tab-content">
-				<category bind:select="onSelect" bind:post="getAmount" grids="{{consume_grids}}" />
+				<category bind:select="onSelect" bind:post="getAmount" grids="{{consume_grids}}" selectedId="{{selectedId}}" />
 			</view>
 		</l-tabpanel>
 		<l-tabpanel tab="收入" key="two" slot="two">
 			<view class="tab-content">
-				<category bind:select="onSelect" bind:post="getAmount" grids="{{income_grids}}" />
+				<category bind:select="onSelect" bind:post="getAmount" grids="{{income_grids}}" selectedId="{{selectedId}}" />
 			</view>
 		</l-tabpanel>
 	</l-tabs>
@@ -31,8 +31,8 @@
 			<view class='key del' hover-class="weui-cell_active" bindtap='tapDate' bindlongpress="longpressDel"
 				bindtouchend="clearDelInterval">
 				<l-popup class="popup" show="{{show_popup}}" animation="show" content-align="bottom">
-					<van-datetime-picker item-height="44" visible-item-count="5" type="date" value="{{ currentDate }}"
-						max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirmDate" />
+					<!-- <van-datetime-picker item-height="44" visible-item-count="5" type="date" value="{{ currentDate }}"
+						max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirmDate" /> -->
 				</l-popup>
 				<text>{{showDate}}</text>
 			</view>

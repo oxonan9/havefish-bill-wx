@@ -16,15 +16,15 @@
     "l-loadmore": "/miniprogram_npm/lin-ui/loadmore/index",
     "l-tag": "/miniprogram_npm/lin-ui/tag/index",
     "l-toast": "/miniprogram_npm/lin-ui/toast/index",
-    "l-status-show": "/miniprogram_npm/lin-ui//status-show/index",
-    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
-
+    "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
+    "l-progress": "/miniprogram_npm/lin-ui/progress/index"
   },
   "pages": [
     "pages/home/home",
     "pages/tally/tally",
     "pages/assay/assay",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/budget/budget"
   ],
   "tabBar": {
     "color": "#bbbbbb",
@@ -33,18 +33,18 @@
     "borderStyle": "white",
     "list": [{
         "pagePath": "pages/home/home",
-        "iconPath": "/images/home.png",
-        "selectedIconPath": "/images/home_hl.png"
+        "iconPath": "/images/tab/bill.png",
+        "selectedIconPath": "/images/tab/bill@hl.png"
+      },
+      {
+        "pagePath": "pages/assay/assay",
+        "iconPath": "/images/tab/assay.png",
+        "selectedIconPath": "/images/tab/assay@hl.png"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "/images/edit.png",
-        "selectedIconPath": "/images/edit.png"
-      },
-      {
-        "pagePath": "pages/my/my",
-        "iconPath": "/images/my.png",
-        "selectedIconPath": "/images/my_hl.png"
+        "iconPath": "/images/tab/more.png",
+        "selectedIconPath": "/images/tab/more@hl.png"
       }
     ]
   },

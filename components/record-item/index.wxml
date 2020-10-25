@@ -1,5 +1,7 @@
 <view class="container">
-	<image class="item-image" src="{{data.icon}}"></image>
+	<view class="grid-item">
+		<image class="item-image" src="{{data.icon}}"></image>
+	</view>
 	<text class="item-title">{{data.name}}</text>
 	<view class="{{data.type==0?'item-amount1':'item-amount'}}">
 		<text>{{data.type==0?'-':'+'}}</text>

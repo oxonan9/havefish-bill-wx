@@ -43,11 +43,85 @@ var chart = null
 // }
 
 function initChart(canvas, width, height) {
+  console.log(width, height)
   chart = echarts.init(canvas, null, {
     width: width,
     height: height
   });
   canvas.setChart(chart);
+  var data = [];
+  for (let i = 1; i <= 30; i++) {
+    if (i == 1 || i == 15 || i == 30) {
+      data.push(i)
+    } else {
+      data.push(i + "点")
+    }
+  }
+  console.log(data)
+  var option = {
+    backgroundColor: "#fff",
+    color: ['#8cc7b5', '#ebb43e'],
+    // tooltip: {
+    //   trigger: 'axis'
+    // },
+    legend: {
+      bottom: 15,
+      data: ['支出', '收入']
+    },
+    grid: {
+      containLabel: true
+    },
+    animation: true,
+    animationDuration: 3000,
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: data,
+      axisLabel: {
+        interval: (index, value) => {
+          //具体逻辑判断
+          if (value.indexOf("点") == -1)
+            return true
+          return false
+        }
+      },
+      axisLine: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      }
+    },
+    yAxis: {
+      min: 0,
+      max: 999,
+      interval: 333,
+      splitLine: {
+        show: true
+      },
+      axisLine: {
+        show: false
+      },
+      axisTick: {
+        show: false
+      }
+    },
+    series: [{
+      name: '支出',
+      type: 'line',
+      smooth: true,
+      data: [0, 100, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 875, 0, 0, 0, 0, 0, 0, 0, 0, 438],
+      showSymbol: true,
+    }, {
+      name: '收入',
+      type: 'line',
+      smooth: true,
+      data: [0, 500, 0, 0, 80, 0, 0, 10, 0, 0, 666, 0, 30, 0, 0, 0, 0, 0, 0, 0, 777, 0, 0, 0, 0, 0, 0, 0, 0, 150],
+      showSymbol: true,
+    }]
+  };
+
+  // chart.setOption(option);
   return chart;
 }
 
@@ -101,7 +175,7 @@ Page({
         containLabel: true
       },
       animation: true,
-      animationDuration: 1500,
+      animationDuration: 3000,
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -149,7 +223,7 @@ Page({
         name: '收入',
         type: 'line',
         smooth: true,
-        data: [0, 500, 0, 0, 80, 0, 0, 10, 0, 0, 666, 0, 30, 0, 0, 0, 0, 0, 0, 0, 777, 0, 5000.89, 0, 0, 0, 0, 0, 0, 150],
+        data: [0, 500, 0, 0, 80, 0, 0, 10, 0, 0, 666, 0, 30, 0, 0, 0, 0, 0, 0, 0, 777, 0,5000.89, 0, 0, 0, 0, 0, 0, 150],
         showSymbol: true,
       }]
     };

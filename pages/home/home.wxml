@@ -1,19 +1,16 @@
 <l-message />
-<view class="nav">
-	<v-nav />
-</view>
-
+<!-- full-screen:全屏 -->
+<l-loading full-screen="{{true}}" show="{{show_loading}}" type="flash"></l-loading>
 <l-status-show l-class="l-status-class" full-screen type="data" show="{{show_status_page}}" describe="这个月您没有记账哦~">
 </l-status-show>
 
 <view class='wraper'>
 	<view class='header'>
+		<v-nav />
 		<view class="header-image">
-			<!-- <image src="/images/fenxi.png"></image> -->
-			<!-- <image src="/images/budget.png"></image>
-			<image src="/images/setting.png"></image> -->
 			<view class="header-date" bind:tap="onSelectDate">
-				<l-tag size="large" shape="circle" plain="{{true}}" font-color="#E6CEAC">{{showDate}}</l-tag>
+				<l-tag size="large" shape="circle" icon-color="#333333" plain="{{true}}" bg-color="#bfd9d3"
+					font-color="#333333">2020 | 10月</l-tag>
 				<!-- <text class="date">{{showDate}}</text> -->
 				<!-- <image src="/images/arrow.png"></image> -->
 			</view>
@@ -47,11 +44,11 @@
 			<view class="right">
 				<view>
 					<text class="tip-text">剩余预算</text>
-					<text class="tip-income">{{88.00}}</text>
+					<text class="tip-income">{{recordAmount.budget}}</text>
 				</view>
 				<view>
 					<text class="tip-text">本月结余</text>
-					<text class="tip-income">{{88.00}}</text>
+					<text class="tip-income">{{recordAmount.balance}}</text>
 				</view>
 			</view>
 
@@ -65,6 +62,6 @@
 	<image class="add" src="/images/edit.png" bindtap="onGoTally"></image>
 </view>
 <l-popup class="popup" show="{{show_popup}}" animation="hide" content-align="bottom">
-	<van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
-		max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" />
+	<!-- <van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
+		max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" /> -->
 </l-popup>
