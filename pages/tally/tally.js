@@ -84,7 +84,6 @@ let income_grids = [{
 Page({
 
   data: {
-    show_popup: false, //是否显示弹框
     show_message: false, //显示消息提示
     maxDate: new Date().getTime(), //最大日期
     minDate: new Date(2019, 10, 1).getTime(), //最小日期
@@ -109,22 +108,13 @@ Page({
   /**
    *  确认日期
    */
-  onConfirmDate(event) {
+  bindDateChange(event) {
+    console.log(event)
     this.setData({
-      show_popup: false,
-      showDate: Util.dateFormat("mm-dd", new Date(event.detail)),
-      'bill.date': Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date(event.detail)),
+      showDate: Util.dateFormat("mm-dd", new Date(event.detail.value)),
+      'bill.date': Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date(event.detail.value)),
     })
   },
-
-
-  //取消弹框
-  onCancelPopup() {
-    this.setData({
-      show_popup: false
-    })
-  },
-
 
   /**
    * 确认备注
@@ -198,7 +188,7 @@ Page({
             page.onLoad();
           }
         })
-      }, 1000);
+      }, 600);
     });
   },
 
@@ -254,17 +244,6 @@ Page({
 
     this.setData({
       'bill.num': num.length == 1 ? '0' : num.substring(0, num.length - 1)
-    })
-  },
-
-  /**
-   * 点击日期
-   */
-  tapDate() {
-    console.log("日期")
-
-    this.setData({
-      show_popup: true
     })
   },
 

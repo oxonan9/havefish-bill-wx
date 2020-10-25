@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "v-nav": "/components/nav/index",
+    "date-tag": "/components/date-tag/index",
     "ec-canvas": "../../ec-canvas/ec-canvas"
   },
   "navigationStyle": "custom",

@@ -24,7 +24,8 @@
     "pages/tally/tally",
     "pages/assay/assay",
     "pages/my/my",
-    "pages/budget/budget"
+    "pages/budget/budget",
+    "pages/pie/pie"
   ],
   "tabBar": {
     "color": "#bbbbbb",

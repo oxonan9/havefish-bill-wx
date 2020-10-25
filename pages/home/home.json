@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "v-nav": "/components/nav/index",
-    "record": "/components/record/index"
+    "record": "/components/record/index",
+    "date-tag": "/components/date-tag/index"
   },
   "navigationBarTitleText": "记一笔",
   "navigationStyle": "custom"

@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="pie-container">
+    <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:tap="onTap"></ec-canvas>
+  </view>
+
+  <view class="main">
+    <block wx:for="{{items}}">
+      <view class="category-item">
+        <view class="grid-item">
+          <image src="{{item.icon}}"></image>
+        </view>
+        <view class="middle">
+          <text class="name">{{item.name}}</text>
+          <l-progress l-class="progress" percent="{{item.percent}}"></l-progress>
+        </view>
+        <view class="number">
+          <text class="amount">{{item.amount}}</text>
+          <text class="percent">{{item.percent}}%</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>

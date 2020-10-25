@@ -1,46 +1,17 @@
 import * as echarts from '../../ec-canvas/echarts';
 
 import {
-  Assay
+  AssayModel
 } from '../../models/assay';
+import {
+  BillModel
+} from '../../models/bill';
+import {
+  Util
+} from '../../utils/utils';
 
 var chart = null
 
-
-// /**
-//  * 初始化图表
-//  */
-// function initChart(canvas, width, height) {
-//   chart = echarts.init(canvas, null, {
-//     width: width,
-//     height: height
-//   });
-//   canvas.setChart(chart);
-//   var option = {
-//     backgroundColor: "#ffffff",
-//     color: ["#333333", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
-//     series: [{
-//       label: {
-//         normal: {
-//           fontSize: 14
-//         }
-//       },
-//       type: 'pie',
-//       center: ['50%', '50%'],
-//       radius: [0, '60%'],
-//       data: [],
-//       itemStyle: {
-//         emphasis: {
-//           shadowBlur: 10,
-//           shadowOffsetX: 0,
-//           shadowColor: 'rgba(0, 2, 2, 0.3)'
-//         }
-//       }
-//     }]
-//   };
-//   chart.setOption(option);
-//   return chart;
-// }
 
 function initChart(canvas, width, height) {
   chart = echarts.init(canvas, null, {
@@ -60,25 +31,53 @@ Page({
     selected: true,
     selectedColor: "#ffffff",
     unSelectedColor: "#e6e6e6",
+
+    date: Util.dateFormat("YYYY-mm", new Date()),
+
+    billAmountData: {},
     ec: {
       onInit: initChart
     }
   },
 
   async onLoad() {
-    let data = await Assay.assay2("2020-10", 0, 0)
-    console.log(data)
-    let chartDataList = [];
-    for (let i in data) {
-      let chartData = {};
-      chartData['value'] = data[i].amount;
-      chartData['name'] = `${data[i].name}:${data[i].amount}`;
-      chartDataList.push(chartData);
-    }
-    this.setData({
-      items: data,
-    })
+    // let data = await Assay.assay2("2020-10", 0, 0)
+    this._initAllData();
+  },
 
+  async _initAllData() {
+    let billAmountData = await BillModel.getBillAmount(this.data.date);
+    let lineData = await AssayModel.line(this.data.date);
+    this.setData({
+      billAmountData
+    })
+    this.initChart(lineData)
+  },
+
+  //向上取整十、整百
+  ceilNumber(value) {
+    if (value < 10) {
+      return 10
+    } else {
+      let num = Number(value.toString().substring(0, 1));
+      return (num + 1) * Math.pow(10, (value.toString().length - 1));
+    }
+  },
+
+  /**
+   * 初始化折线图
+   */
+  initChart(lineData) {
+    // let chartDataList = [];
+    // for (let i in data) {
+    //   let chartData = {};
+    //   chartData['value'] = data[i].amount;
+    //   chartData['name'] = `${data[i].name}:${data[i].amount}`;
+    //   chartDataList.push(chartData);
+    // }
+    // this.setData({
+    //   items: data,
+    // })
     var edata = [];
     for (let i = 1; i <= 30; i++) {
       if (i == 1 || i == 15 || i == 30) {
@@ -101,7 +100,7 @@ Page({
         containLabel: true
       },
       animation: true,
-      animationDuration: 1500,
+      animationDuration: 1500, //动画时长
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -124,8 +123,8 @@ Page({
       yAxis: {
         show: true,
         min: 0,
-        max: 6000,
-        interval: 2000,
+        max: this.ceilNumber(lineData.max_consume),
+        interval: this.ceilNumber(lineData.max_consume) / 4,
         splitLine: {
           show: true,
           lineStyle: {
@@ -143,21 +142,20 @@ Page({
         name: '支出',
         type: 'line',
         smooth: true,
-        data: [0, 100, 0, 0, 1000, 0, 0, 10, 0, 230, 0, 0, 256, 0, 0, 0, 0, 0, 0, 0, 875, 0, 0, 0, 0, 520, 0, 0, 0, 438],
+        data: lineData.consumes,
         showSymbol: true,
       }, {
         name: '收入',
         type: 'line',
         smooth: true,
-        data: [0, 500, 0, 0, 80, 0, 0, 10, 0, 0, 666, 0, 30, 0, 0, 0, 0, 0, 0, 0, 777, 0, 5000.89, 0, 0, 0, 0, 0, 0, 150],
+        data: lineData.incomes,
         showSymbol: true,
       }]
     };
-
     setTimeout(() => {
       chart.clear()
       chart.setOption(option);
-    }, 0)
+    }, 100)
   },
 
   onTap() {
@@ -165,4 +163,17 @@ Page({
       selected: !this.data.selected
     })
   },
+
+  onDateChange(event) {
+    this.setData({
+      date: event.detail
+    })
+    this._initAllData();
+  },
+
+  onGoPie() {
+    wx.navigateTo({
+      url: '/pages/pie/pie',
+    })
+  }
 })

@@ -14,12 +14,10 @@ Page({
     show_status_page: false,
     show_loadmore: false,
     show_loading: true,
-    show_popup: false,
-    currentDate: new Date().getTime(),
-    maxDate: new Date().getTime(),
-    showDate: Util.dateFormat("YYYY-mm", new Date()),
+
     dataList: [],
 
+    date: Util.dateFormat("YYYY-mm", new Date()),
     page: 0,
     count: 10,
 
@@ -35,19 +33,6 @@ Page({
     })
   },
 
-  onSelectDate(event) {
-    this.setData({
-      show_popup: true
-    })
-  },
-  onConfirm(event) {
-    this.setData({
-      currentDate: new Date(event.detail).getTime(),
-      showDate: Util.dateFormat("YYYY-mm", new Date(event.detail)),
-      show_popup: false
-    })
-    this._initAllData();
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -56,21 +41,16 @@ Page({
   },
 
   async _initAllData() {
-    let recordAmount = await BillModel.getRecordAmount(this.data.showDate);
+    let recordAmount = await BillModel.getBillAmount(this.data.date);
+    this._getRecordList(0, this.data.count, this.data.date)
     this.setData({
-      recordAmount
+      recordAmount,
     })
-    this._getRecordList(0, this.data.count, this.data.showDate)
   },
-
-
 
   async _getRecordList(page, count, date) {
     let dataList = this.data.dataList;
-    let data = await BillModel.getRecordList(page, count, date).catch(err => {
-      console.log(err)
-    })
-    console.log(data)
+    let data = await BillModel.getRecordList(page, count, date);
     let items = data.items;
     if (page == 0) {
       dataList = items
@@ -105,7 +85,14 @@ Page({
     if (page == totalPages) {
       return;
     }
-    this._getRecordList(page, this.data.count, this.data.showDate)
+    this._getRecordList(page, this.data.count, this.data.date)
   },
+
+  onDateChange(event) {
+    this.setData({
+      date: event.detail
+    })
+    this._initAllData();
+  }
 
 })

@@ -8,11 +8,8 @@
 	<view class='header'>
 		<v-nav />
 		<view class="header-image">
-			<view class="header-date" bind:tap="onSelectDate">
-				<l-tag size="large" shape="circle" icon-color="#333333" plain="{{true}}" bg-color="#bfd9d3"
-					font-color="#333333">2020 | 10月</l-tag>
-				<!-- <text class="date">{{showDate}}</text> -->
-				<!-- <image src="/images/arrow.png"></image> -->
+			<view class="header-date">
+				<date-tag bind:datechange="onDateChange" />
 			</view>
 		</view>
 
@@ -61,7 +58,3 @@
 
 	<image class="add" src="/images/edit.png" bindtap="onGoTally"></image>
 </view>
-<l-popup class="popup" show="{{show_popup}}" animation="hide" content-align="bottom">
-	<!-- <van-datetime-picker item-height="44" visible-item-count="5" type="year-month" value="{{ currentDate }}"
-		max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirm" /> -->
-</l-popup>

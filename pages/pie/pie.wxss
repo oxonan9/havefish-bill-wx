@@ -1,0 +1,89 @@
+/**index.wxss**/
+.container {
+  width: 100%;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.pie-container {
+  width: 100%;
+  height: 500rpx;
+}
+
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20rpx;
+  width: 100%;
+  height: 80rpx;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  background-color: whitesmoke;
+}
+
+.category-item image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 60rpx;
+
+  margin-left: 20rpx;
+
+}
+
+.progress {
+  width: 400rpx;
+}
+
+
+.category-item .name {
+  font-size: 28rpx;
+  line-height: 28rpx;
+  margin-bottom: 10rpx;
+}
+
+
+.number {
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  right: 0;
+
+  margin-right: 20rpx;
+
+  height: 70rpx;
+}
+
+.amount {
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.percent {
+  font-size: 24rpx;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

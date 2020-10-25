@@ -8,6 +8,8 @@
   </view>
 
   <view class="main">
+    <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+    <!-- 
     <text class="main-text">常用功能</text>
 
     <l-grid l-class="grid" col-num="3">
@@ -41,7 +43,7 @@
         <image src="/images/account/education.png"></image>
         <text>分享懒橙</text>
       </l-grid-item>
-    </l-grid>
+    </l-grid> -->
   </view>
 
 

@@ -30,11 +30,9 @@
 			<view class='key three' hover-class="weui-cell_active" data-key='3' bindtap='tapKey'>3</view>
 			<view class='key del' hover-class="weui-cell_active" bindtap='tapDate' bindlongpress="longpressDel"
 				bindtouchend="clearDelInterval">
-				<l-popup class="popup" show="{{show_popup}}" animation="show" content-align="bottom">
-					<!-- <van-datetime-picker item-height="44" visible-item-count="5" type="date" value="{{ currentDate }}"
-						max-date="{{ maxDate }}" bind:input="onInput" bind:confirm="onConfirmDate" /> -->
-				</l-popup>
-				<text>{{showDate}}</text>
+				<picker mode="date" fields="day" value="{{date}}" start="2015-09" end="2020-10" bindchange="bindDateChange">
+					<text>{{showDate}}</text>
+				</picker>
 			</view>
 		</view>
 		<view class="keyboard-bottom3">

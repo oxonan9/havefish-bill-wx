@@ -5,7 +5,7 @@ from '../utils/http.js'
 class BillModel {
 
   /** */
-  static async getRecordAmount(recordTime) {
+  static async getBillAmount(recordTime) {
     return await Http.request({
       url: "bill/total_amount",
       method: "GET",
