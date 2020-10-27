@@ -53,7 +53,7 @@ ec-canvas {
 }
 
 .progress {
-  width: 400rpx;
+  width: 500rpx;
 }
 
 
@@ -67,10 +67,8 @@ ec-canvas {
 .number {
   display: flex;
   flex-direction: column;
-
   position: absolute;
   right: 0;
-
   margin-right: 20rpx;
 
   height: 70rpx;

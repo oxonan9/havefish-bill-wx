@@ -16,7 +16,7 @@
   align-items: center;
 
   width: 400rpx;
-  height: 100rpx;
+  height: 90rpx;
   background-color: whitesmoke;
   border-radius: 10px;
 }
@@ -27,7 +27,7 @@
 }
 
 .tip-text {
-  color: #bfd9d3;
+  color: #8cc7b5;
   font-size: 32rpx;
   margin-left: 20rpx;
 }
@@ -47,22 +47,23 @@
 .grid {}
 
 .grid image {
-  width: 100rpx;
-  height: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
 }
 
 .item {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 10rpx 30rpx;
+  margin: 10rpx 20rpx;
   border-radius: 10px;
   padding: 20rpx;
   background-color: whitesmoke;
 }
 
 .item text {
-  margin-top: 10rpx;
+  font-size: 28rpx;
+  margin-top: 25rpx;
 }
 
 /**index.wxss**/

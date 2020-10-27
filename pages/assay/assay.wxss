@@ -2,6 +2,11 @@ page {
   background-color: white;
 }
 
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 .header {
   width: 100%;
@@ -152,9 +157,7 @@ ec-canvas {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   height: 60rpx;
-
   margin-left: 20rpx;
 
 }
@@ -199,17 +202,19 @@ ec-canvas {
 }
 
 .footer-text {
+  width: 250rpx;
   margin-left: 20rpx;
   margin-top: 40rpx;
   color: white;
 }
 
 .footer-v {
-  width: 280rpx;
   height: 360rpx;
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin-left: 30rpx;
+  background-color: royalblue;
   border-radius: 10px;
 }
 
@@ -219,20 +224,23 @@ ec-canvas {
 }
 
 .footer-one-image {
-  width: 240rpx;
+  width: 210rpx;
   height: 50rpx;
   margin-top: 160rpx;
-  margin-left: 20rpx;
 }
 
 .footer-two-image {
   width: 160rpx;
   height: 160rpx;
-  margin-top: 90rpx;
-  margin-left: 60rpx;
+  margin-top: 100rpx;
 }
 
 .footer-two-bg {
   background-color: #8cc7b5;
   box-shadow: 0px 2px 5px 0px #8cc7b5;
+}
+
+.footer-three-bg {
+  background-color: #333;
+  box-shadow: 0px 2px 5px 0px #333;
 }

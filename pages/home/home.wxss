@@ -1,138 +1,109 @@
-  page {
-    width: 100%;
-    height: 100%;
-    background-color: white;
-  }
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
 
-  .wraper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-  }
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: white;
+}
 
-  .header {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    background-color: white;
-  }
-
-  .header-image {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: 88rpx;
-    flex: 0 0 100rpx;
-    /* 不放大不缩小固定100rpx */
-  }
-
-  .header-image image {
-    width: 50rpx;
-    height: 50rpx;
-    margin-left: 40rpx;
-  }
+.header-date {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  height: 88rpx;
+}
 
 
-  .header-date {
-    /* margin-left: 224rpx; */
-    font-weight: 500;
-    margin-bottom: 15rpx;
-  }
+.header-amount {
+  height: 240rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #bfd9d3;
+  border-radius: 10px;
+  margin: 10rpx 20rpx 20rpx 20rpx;
+  color: white;
+  position: relative;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  margin-left: 32rpx;
+}
+
+.consume-text {
+  font-size: 32rpx;
+  margin-top: 20rpx;
+}
+
+.consume-price {
+  margin-top: 16rpx;
+}
 
 
-  .header-amount {
-    height: 240rpx;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #bfd9d3;
-    border-radius: 10px;
-    margin: 10rpx 20rpx 20rpx 20rpx;
-    color: white;
-    position: relative;
-  }
+.income-view {
+  margin-top: 28rpx;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 20rpx;
+}
 
-  .left {
-    display: flex;
-    flex-direction: column;
-    margin-left: 32rpx;
-  }
+.tip-text {
+  font-size: 28rpx;
+}
 
-  .left-tip1 {
-    margin-top: 16rpx;
-  }
-
-  .left-tip2 {
-    margin-top: 28rpx;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 20rpx;
-  }
-
-  .tip-text1 {
-    font-size: 32rpx;
-    margin-top: 20rpx;
-  }
+.tip-price {
+  margin-left: 10rpx;
+}
 
 
-  .tip-consume {
-    font-size: 48rpx;
-    font-weight: 800;
-    margin-left: 10rpx;
-  }
 
-  .tip-income {
-    font-size: 28rpx;
-    margin-left: 10rpx;
-  }
+.right {
+  display: flex;
+  flex-direction: column;
+  margin-right: 100rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 20rpx;
+}
 
-  .right {
-    display: flex;
-    flex-direction: column;
-    margin-right: 100rpx;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin-bottom: 20rpx;
-  }
-
-  .tip-text {
-    font-size: 28rpx;
-  }
+.tip-text {
+  font-size: 28rpx;
+}
 
 
-  .main {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 460rpx;
-    z-index: -1;
-  }
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 460rpx;
+  z-index: -1;
+}
 
 
-  .add {
-    width: 100rpx;
-    height: 100rpx;
-    margin-bottom: 40rpx;
-    border-radius: 50%;
-    background-color: white;
-    box-shadow: 0px 2px 5px 0px #bbb;
-    position: fixed;
-    right: 40rpx;
-    bottom: 0;
-  }
+.add-image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 40rpx;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0px 2px 5px 0px #bbb;
+  position: fixed;
+  right: 40rpx;
+  bottom: 0;
+}
 
-  .popup-view {
-    width: 100%;
-    height: 200px;
-    background-color: white;
-    border-top-left-radius: 10rpx;
-    border-top-right-radius: 10rpx;
-  }
-
-  .l-status-class {
-    margin-top: 200rpx;
-  }
+.l-status-class {
+  margin-top: 200rpx;
+}

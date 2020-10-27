@@ -4,36 +4,21 @@
 <l-status-show l-class="l-status-class" full-screen type="data" show="{{show_status_page}}" describe="这个月您没有记账哦~">
 </l-status-show>
 
-<view class='wraper'>
+<view class='container'>
 	<view class='header'>
 		<v-nav />
-		<view class="header-image">
-			<view class="header-date">
-				<date-tag bind:datechange="onDateChange" />
-			</view>
+		<view class="header-date">
+			<date-tag bind:datechange="onDateChange" />
 		</view>
 
 		<view class="header-amount">
-			<!-- <view class="income">
-				<text class="income-amount">{{recordAmount.income}}</text>
-				<text class="income-text">收入</text>
-			</view>
-
-			<image class="sift" src="/images/sift.png"></image>
-
-			<view class="consume">
-				<text class="consume-amount">{{recordAmount.consume}}</text>
-				<text class="consume-text">支出</text>
-			</view> -->
 			<view class="left">
-				<text class="tip-text1">本月支出</text>
-				<view class="left-tip1">
-					<text class="">¥</text>
-					<text class="tip-consume">{{recordAmount.consume}}</text>
-				</view>
-				<view class="left-tip2">
+				<text class="consume-text">本月支出</text>
+				<l-price class="consume-price" value="{{recordAmount.consume}}" color="#fff" unit-size="32" value-size="48"
+					autofix />
+				<view class="income-view">
 					<text class="tip-text">本月收入</text>
-					<text class="tip-income">{{recordAmount.income}}</text>
+					<l-price class="tip-price" unit-size="24" value="{{recordAmount.income}}" color="#fff" autofix />
 				</view>
 
 			</view>
@@ -41,11 +26,11 @@
 			<view class="right">
 				<view>
 					<text class="tip-text">剩余预算</text>
-					<text class="tip-income">{{recordAmount.budget}}</text>
+					<l-price class="tip-price" unit-size="24" value="{{recordAmount.budget}}" color="#fff" autofix />
 				</view>
 				<view>
 					<text class="tip-text">本月结余</text>
-					<text class="tip-income">{{recordAmount.balance}}</text>
+					<l-price class="tip-price" unit-size="24" value="{{recordAmount.balance}}" color="#fff" autofix />
 				</view>
 			</view>
 
@@ -56,5 +41,5 @@
 		<record wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
 	</view>
 
-	<image class="add" src="/images/edit.png" bindtap="onGoTally"></image>
+	<image class="add-image" src="/images/edit.png" bindtap="onGoTally"></image>
 </view>

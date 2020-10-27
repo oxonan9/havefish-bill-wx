@@ -105,6 +105,14 @@
           "id": -1,
           "name": "pages/pie/pie",
           "pathName": "pages/pie/pie",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/assay-budget/assay-budget",
+          "pathName": "pages/assay-budget/assay-budget",
+          "query": "",
           "scene": null
         }
       ]

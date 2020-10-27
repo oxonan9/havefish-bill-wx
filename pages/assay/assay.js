@@ -175,5 +175,11 @@ Page({
     wx.navigateTo({
       url: '/pages/pie/pie',
     })
+  },
+
+  onGoAssayBudget() {
+    wx.navigateTo({
+      url: '/pages/assay-budget/assay-budget',
+    })
   }
 })

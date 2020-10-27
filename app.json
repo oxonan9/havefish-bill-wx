@@ -17,7 +17,10 @@
     "l-tag": "/miniprogram_npm/lin-ui/tag/index",
     "l-toast": "/miniprogram_npm/lin-ui/toast/index",
     "l-status-show": "/miniprogram_npm/lin-ui/status-show/index",
-    "l-progress": "/miniprogram_npm/lin-ui/progress/index"
+    "l-progress": "/miniprogram_npm/lin-ui/progress/index",
+    "l-price": "/miniprogram_npm/lin-ui/price/index",
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "l-notice-bar": "/miniprogram_npm/lin-ui/notice-bar/index"
   },
   "pages": [
     "pages/home/home",
@@ -25,14 +28,16 @@
     "pages/assay/assay",
     "pages/my/my",
     "pages/budget/budget",
-    "pages/pie/pie"
+    "pages/pie/pie",
+    "pages/assay-budget/assay-budget"
   ],
   "tabBar": {
     "color": "#bbbbbb",
     "selectedColor": "#333333",
     "backgroundColor": "#ffffff",
     "borderStyle": "white",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/home/home",
         "iconPath": "/images/tab/bill.png",
         "selectedIconPath": "/images/tab/bill@hl.png"

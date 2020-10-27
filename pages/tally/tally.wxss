@@ -102,10 +102,11 @@ page {
 .key {
   width: calc((100vw - 30rpx - 60rpx)/4);
   box-sizing: border-box;
-  background: #bfd9d3;
+  background: white;
   border-radius: 10px;
   line-height: 110rpx;
   height: 110rpx;
+  color: #333333;
 }
 
 .key.flex2 {
@@ -141,6 +142,7 @@ page {
   align-items: stretch;
   justify-content: space-between;
   margin-bottom: 12rpx;
+  
 }
 
 /* 底部按钮margin清0 */
@@ -165,7 +167,7 @@ page {
 
 /* 确定按钮文字居中 */
 .submit {
-  background: #bfd9d3;
+  background: #8cc7b5;
   color: #FFFFFF;
   height: 354rpx;
   line-height: 354rpx;
@@ -196,4 +198,5 @@ page {
 .del-image {
   width: 60rpx;
   height: 60rpx;
+  vertical-align: middle;
 }

@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number-text {
+  margin-top: 40rpx;
+}
+
+
+.l-progress-class {
+  margin-top: 40rpx;
+  width: 500rpx !important;
+}

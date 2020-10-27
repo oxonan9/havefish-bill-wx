@@ -34,7 +34,7 @@
   </view>
   <view class="main">
     <text class="title">收支走势</text>
- 
+
 
     <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
 
@@ -54,17 +54,23 @@
       </view>
     </block> -->
   </view>
-  <view class="footer">
+  <scroll-view scroll-x>
+    <view class="footer">
+      <view class="footer-v footer-one-bg" bind:tap="onGoAssayBudget">
+        <text class="footer-text">消费预算</text>
+        <image class="footer-one-image" src="/images/progress.png"></image>
+      </view>
 
-    <view class="footer-v footer-one-bg">
-      <text class="footer-text">消费预算</text>
-      <image class="footer-one-image" src="/images/progress.png"></image>
+      <view class="footer-v footer-two-bg" bind:tap="onGoPie">
+        <text class="footer-text">消费方式</text>
+        <image class="footer-two-image" src="/images/progress@pie.png"></image>
+      </view>
+
+      <view class="footer-v footer-three-bg" bind:tap="onGoPie">
+        <text class="footer-text">存钱进度</text>
+        <image class="footer-two-image" src="/images/progress@pie.png"></image>
+      </view>
     </view>
+  </scroll-view>
 
-    <view class="footer-v footer-two-bg" bind:tap="onGoPie">
-      <text class="footer-text">消费方式</text>
-      <image class="footer-two-image" src="/images/progress@pie.png"></image>
-    </view>
-
-  </view>
 </view>

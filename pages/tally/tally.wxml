@@ -52,8 +52,7 @@
 					<view class='key nine' hover-class="weui-cell_active" data-key='.' bindtap='tapKey'>.</view>
 					<view class='key dot' hover-class="weui-cell_active" data-key='.' bindtap='tapDel'
 						bindlongpress="longpressDel" bindtouchend="stopInterval">
-						<!-- <image class="del-image" src="/images/left-arrow.png" mode="aspectFill"></image> -->
-						退格
+						<image class="del-image" src="/images/back.png" mode="aspectFill"></image>
 					</view>
 				</view>
 			</view>

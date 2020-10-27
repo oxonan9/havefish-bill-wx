@@ -1,2 +1,12 @@
-<!--pages/budget/budget.wxml-->
-<text>pages/budget/budget.wxml</text>
+<l-notice-bar front-icon-name="notification" type="still" show="{{true}}">目前仅默认支持当月的总预算,后续将会对该模块完善~</l-notice-bar>
+
+<view class="container">
+
+  <view class="input-view">
+    <l-input l-class="l-input" l-input-class="" hide-label="{{true}}" class="remark" bind:linconfirm="onConfirmRemark"
+      focus="{{true}}" type="number" showRow="{{false}}" maxlength="8" />
+  </view>
+
+  <l-button class="btn" type="default" shape="semicircle" width="250" height="80">设置预算</l-button>
+
+</view>

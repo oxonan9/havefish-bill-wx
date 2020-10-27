@@ -55,7 +55,7 @@ Page({
         },
         type: 'pie',
         center: ['50%', '50%'],
-        radius: [0, '50%'],
+        radius: [0, '55%'],
         data: chartDataList,
         itemStyle: {
           emphasis: {
