@@ -19,7 +19,7 @@
 	<view class="keyboard">
 		<view class='keyboard-head'>
 			<text>备注：</text>
-			<l-input l-input-class="l-input-class" hide-label="{{true}}" class="remark" bind:linconfirm="onConfirmRemark"
+			<l-input l-input-class="l-input-class" hide-label="{{true}}" class="remark" bind:linconfirm="onConfirmRemark"  bind:linblur="onConfirmRemark"
 				placeholder="写个备注..." showRow="{{false}}" />
 			<text class="amount">{{bill.num}}</text>
 		</view>

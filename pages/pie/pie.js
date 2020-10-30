@@ -27,14 +27,25 @@ Page({
     }
   },
   data: {
+    show_status: false,
     ec: {
       onInit: initChart
     }
   },
 
   async onLoad() {
-    let data = await AssayModel.assay2("2020-10", 0, 0)
-    console.log(data)
+    let data;
+    try {
+      data = await AssayModel.assay2("2020-10", 0, 0)
+      this._handleSuccess(data)
+    } catch (error) {
+      this.setData({
+        show_status: true
+      })
+    }
+  },
+
+  _handleSuccess(data) {
     let chartDataList = [];
     for (let i in data) {
       let chartData = {};
@@ -44,6 +55,7 @@ Page({
     }
     this.setData({
       items: data,
+      show_status: false
     })
 
     var option = {
@@ -72,12 +84,8 @@ Page({
     }, 100)
   },
 
-  onTap(e) {
-    console.log(e)
-  },
-
-  onReady() {
-
-  },
+  onRefresh() {
+    this.onLoad()
+  }
 
 });

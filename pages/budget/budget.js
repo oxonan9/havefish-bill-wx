@@ -1,3 +1,10 @@
+const {
+  BudgetModel
+} = require("../../models/budget");
+const {
+  Util
+} = require("../../utils/utils");
+
 // pages/budget/budget.js
 Page({
 
@@ -5,7 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    amount: 0
   },
 
   /**
@@ -15,52 +22,30 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onSave() {
+    let amount = this.data.amount;
+    if (amount == 0) {
+      wx.showToast({
+        title: '😝不能为空哦～',
+        icon: "none"
+      })
+      return;
+    }
+    BudgetModel.save(Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date()), amount)
+    wx.lin.showToast({
+      title: '设置成功~奥利给!',
+      icon: 'success'
+    })
+    setTimeout(() => {
+      wx.navigateBack({
+        url: '/pages/my/my'
+      })
+    }, 600);
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onConfirmRemark(event) {
+    this.setData({
+      amount: event.detail.value
+    })
   }
 })

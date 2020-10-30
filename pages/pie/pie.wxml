@@ -1,4 +1,6 @@
-<!--index.wxml-->
+
+<l-status-show show="{{show_status}}" type="network" bind:lintap="onRefresh"></l-status-show>
+
 <view class="container">
   <view class="pie-container">
     <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:tap="onTap"></ec-canvas>

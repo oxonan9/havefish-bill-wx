@@ -2,6 +2,9 @@ import {
   Http
 }
 from '../utils/http.js'
+import {
+  Paging
+} from '../utils/paging.js'
 class BillModel {
 
   /** */
@@ -27,6 +30,15 @@ class BillModel {
         count,
         recordTime: date
       }
+    })
+  }
+
+  /**
+   * 
+   */
+  static getBillPaging(date) {
+    return new Paging({
+      url: "bill/all?recordTime=" + date
     })
   }
 

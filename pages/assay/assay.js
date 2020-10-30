@@ -173,13 +173,13 @@ Page({
 
   onGoPie() {
     wx.navigateTo({
-      url: '/pages/pie/pie',
+      url: '/pages/pie/pie'
     })
   },
 
   onGoAssayBudget() {
     wx.navigateTo({
-      url: '/pages/assay-budget/assay-budget',
+      url: '/pages/assay-budget/assay-budget?date=' + this.data.date,
     })
   }
 })

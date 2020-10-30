@@ -12,9 +12,10 @@ Page({
    */
   data: {
     show_status_page: false,
-    show_loadmore: false,
+    show_status_network: false,
     show_loading: true,
-
+    loadingType: "loading",
+    loadingShow: true,
     dataList: [],
 
     date: Util.dateFormat("YYYY-mm", new Date()),
@@ -37,62 +38,79 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    this._initAllData()
+    this.initTop();
+    this.initBottom();
   },
 
-  async _initAllData() {
-    let recordAmount = await BillModel.getBillAmount(this.data.date);
-    this._getRecordList(0, this.data.count, this.data.date)
-    this.setData({
-      recordAmount,
-    })
-  },
-
-  async _getRecordList(page, count, date) {
-    let dataList = this.data.dataList;
-    let data = await BillModel.getRecordList(page, count, date);
-    let items = data.items;
-    if (page == 0) {
-      dataList = items
-    } else {
-      //下拉刷新时，如果当前最后一条数据与新数据的日期相同，进行合并，不然会出现重复日期的问题
-      for (let i in items) {
-        if (items[i].date == dataList[dataList.length - 1].date) {
-          dataList[dataList.length - 1].items = dataList[dataList.length - 1].items.concat(items[i].items)
-        } else {
-          dataList.push(items[i])
-        }
+  async initTop() {
+    try {
+      let billAmount = await BillModel.getBillAmount(this.data.date);
+      this.setData({
+        billAmount,
+        show_loading: false,
+        show_status_network: false
+      })
+    } catch (error) {
+      if (error.errMsg.includes("request")) {
+        this.setData({
+          show_loading: false,
+          show_status_network: true
+        })
       }
+      console.log(this.data.show_status_network)
+    }
+  },
+
+  async initBottom() {
+    let billPaging = BillModel.getBillPaging(this.data.date);
+    let data = await billPaging.getMoreData();
+    if (!data) {
+      return
     }
     this.setData({
-      dataList: dataList,
-      page: data.page,
-      totalPages: data.total_pages,
-      show_loading: false,
-      show_loadmore: false,
-      show_status_page: dataList.length == 0 ? true : false
+      billPaging,
+      bills: data.items,
     })
   },
-
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    this.data.show_loadmore = true;
-    let page = this.data.page + 1;
-    let totalPages = this.data.totalPages;
-    if (page == totalPages) {
-      return;
+  async onReachBottom() {
+    let billPaging = this.data.billPaging;
+    let data = await billPaging.getMoreData();
+    if (!data) {
+      return
     }
-    this._getRecordList(page, this.data.count, this.data.date)
+    if (!data.moreData) {
+      this.setData({
+        loadingType: "end"
+      })
+    }
+    let bills = this._uniteItems(data.items);
+    this.setData({
+      bills
+    })
+  },
+
+  //下拉刷新时，如果当前最后一条数据与新数据的日期相同，进行合并，不然会出现重复日期的问题
+  _uniteItems(items) {
+    let bills = this.data.bills;
+    for (let i in items) {
+      if (items[i].date == bills[bills.length - 1].date) {
+        dataList[dataList.length - 1].items = bills[bills.length - 1].items.concat(items[i].items)
+      } else {
+        bills.push(items[i])
+      }
+    }
+    return bills;
   },
 
   onDateChange(event) {
     this.setData({
       date: event.detail
     })
-    this._initAllData();
+    this.onLoad();
   }
 
 })

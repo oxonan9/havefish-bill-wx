@@ -1,45 +1,51 @@
 <l-message />
 <!-- full-screen:全屏 -->
 <l-loading full-screen="{{true}}" show="{{show_loading}}" type="flash"></l-loading>
-<l-status-show l-class="l-status-class" full-screen type="data" show="{{show_status_page}}" describe="这个月您没有记账哦~">
+<l-status-show l-class="l-status-class" full-screen type="data" show="{{bills.length==0}}" describe="这个月您没有记账哦~">
 </l-status-show>
 
-<view class='container'>
-	<view class='header'>
-		<v-nav />
-		<view class="header-date">
-			<date-tag bind:datechange="onDateChange" />
-		</view>
+<l-status-show l-class="l-status-class" full-screen type="network" show="{{show_status_network}}" describe="网络出现错误啦~">
+</l-status-show>
 
-		<view class="header-amount">
-			<view class="left">
-				<text class="consume-text">本月支出</text>
-				<l-price class="consume-price" value="{{recordAmount.consume}}" color="#fff" unit-size="32" value-size="48"
-					autofix />
-				<view class="income-view">
-					<text class="tip-text">本月收入</text>
-					<l-price class="tip-price" unit-size="24" value="{{recordAmount.income}}" color="#fff" autofix />
+<l-loadmore show="{{bills.length>0}}" type="{{loadingType}}">
+
+	<view slot="content" class='container' type="{{loadingType}}">
+		<view class='header'>
+			<v-nav />
+			<view class="header-date">
+				<date-tag bind:datechange="onDateChange" />
+			</view>
+
+			<view class="header-amount">
+				<view class="left">
+					<text class="consume-text">本月支出</text>
+					<l-price class="consume-price" value="{{billAmount.consume}}" color="#fff" unit-size="32" value-size="48"
+						autofix />
+					<view class="income-view">
+						<text class="tip-text">本月收入</text>
+						<l-price class="tip-price" unit-size="24" value="{{billAmount.income}}" color="#fff" autofix />
+					</view>
+
+				</view>
+
+				<view class="right">
+					<view>
+						<text class="tip-text">剩余预算</text>
+						<l-price class="tip-price" unit-size="24" value="{{billAmount.budget}}" color="#fff" autofix />
+					</view>
+					<view>
+						<text class="tip-text">本月结余</text>
+						<l-price class="tip-price" unit-size="24" value="{{billAmount.balance}}" color="#fff" autofix />
+					</view>
 				</view>
 
 			</view>
-
-			<view class="right">
-				<view>
-					<text class="tip-text">剩余预算</text>
-					<l-price class="tip-price" unit-size="24" value="{{recordAmount.budget}}" color="#fff" autofix />
-				</view>
-				<view>
-					<text class="tip-text">本月结余</text>
-					<l-price class="tip-price" unit-size="24" value="{{recordAmount.balance}}" color="#fff" autofix />
-				</view>
-			</view>
-
 		</view>
-	</view>
 
-	<view class="main">
-		<record wx:for="{{dataList}}" wx:key="index" data="{{item}}" />
-	</view>
+		<view class="main">
+			<record wx:for="{{bills}}" wx:key="index" data="{{item}}" />
+		</view>
 
-	<image class="add-image" src="/images/edit.png" bindtap="onGoTally"></image>
-</view>
+		<image class="add-image" src="/images/edit.png" bindtap="onGoTally"></image>
+	</view>
+</l-loadmore>
