@@ -4,7 +4,6 @@
 
 
 # 使用技术
-
 * 前端：原生小程序、Lin-UI开源组件库
 * 后端：Java、SpringBoot、JPA
 
@@ -12,7 +11,6 @@
 
 
 # 项目截图
-
 
 items[
 
