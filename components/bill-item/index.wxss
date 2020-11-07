@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.grid-item {
+.image-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -17,23 +17,23 @@
   background-color: whitesmoke;
 }
 
-.item-image {
+.image {
   width: 60rpx;
   height: 60rpx;
 }
 
-.item-title {
+.title {
   margin-left: 40rpx;
 }
 
-.item-amount {
+.amount-income {
   position: absolute;
   right: 40rpx;
   color: #16A83B;
   font-weight: bold;
 }
 
-.item-amount1 {
+.amount-consume {
   position: absolute;
   right: 40rpx;
   color: #E46A6F;

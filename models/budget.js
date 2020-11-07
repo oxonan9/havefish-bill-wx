@@ -4,13 +4,23 @@ const {
 
 class BudgetModel {
 
-  static save(date, amount) {
-    Http.request({
+  static async save(date, amount) {
+    return await Http.request({
       url: "budget/save",
       method: "POST",
       data: {
         date: date,
         amount: amount
+      }
+    })
+  }
+
+  static async get(date) {
+    return await Http.request({
+      url: "budget/get",
+      method: "GET",
+      data: {
+        date
       }
     })
   }

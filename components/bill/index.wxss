@@ -5,11 +5,17 @@
   margin-bottom: 30rpx;
 }
 
-.date {
-  margin-left: 40rpx;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size: 28rpx;
   color: #bbbbbb;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
 }
+
 
 .item-container {
   display: flex;

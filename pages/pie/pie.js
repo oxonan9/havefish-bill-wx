@@ -9,7 +9,7 @@ function initChart(canvas, width, height) {
   chart = echarts.init(canvas, null, {
     width: width,
     height: height
-  });
+  }); 
   canvas.setChart(chart);
   chart.on('click', (parmas) => {
     console.log(parmas)
@@ -18,35 +18,35 @@ function initChart(canvas, width, height) {
 }
 
 Page({
-  onShareAppMessage: function (res) {
-    return {
-      title: 'ECharts 可以在微信小程序中使用啦！',
-      path: '/pages/index/index',
-      success: function () {},
-      fail: function () {}
-    }
-  },
+
   data: {
-    show_status: false,
+    show_network_status: false,
+    show_data_status: false,
     ec: {
       onInit: initChart
     }
   },
 
-  async onLoad() {
-    let data;
+  async onLoad(options) {
+    let date = options.date;
     try {
-      data = await AssayModel.assay2("2020-10", 0, 0)
+      let data = await AssayModel.assay2(date, 0, 0)
       this._handleSuccess(data)
     } catch (error) {
       this.setData({
-        show_status: true
+        show_network_status: true
       })
     }
   },
 
   _handleSuccess(data) {
     let chartDataList = [];
+    if (!data || data.length == 0) {
+      this.setData({
+        show_data_status: true
+      })
+      return
+    }
     for (let i in data) {
       let chartData = {};
       chartData['value'] = data[i].percent;
@@ -55,7 +55,7 @@ Page({
     }
     this.setData({
       items: data,
-      show_status: false
+      show_network_status: false
     })
 
     var option = {
@@ -81,7 +81,7 @@ Page({
     setTimeout(() => {
       chart.clear()
       chart.setOption(option);
-    }, 100)
+    }, 50)
   },
 
   onRefresh() {

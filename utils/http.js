@@ -1,15 +1,42 @@
 import {
   config
 } from '../config.js'
+import {
+  Token
+} from '../models/token.js';
 class Http {
 
   static async request({
     url,
     method = "GET",
-    data = {}
+    data = {},
+    refretch = true,
   }) {
-    const res = await Http._request(url, method, data)
-    return res.data
+    let res = await Http._request(url, method, data)
+    let statusCode = res.statusCode.toString();
+    if (statusCode.startsWith("2")) {
+      return res.data
+    } else {
+      if (statusCode == '401') {
+        //token未授权 二次重发  防止多次重发
+        if (refretch) {
+          return await Http._refetch({
+            url,
+            method,
+            data
+          })
+        }
+      } else {
+        Http._showError(res.data.message)
+      }
+    }
+  }
+  //二次重发 
+  static async _refetch(data) {
+    let token = new Token();
+    await token.getToken()
+    data.refretch = false
+    return await Http.request(data);
   }
 
   static _request(url, method = "GET", data = {}) {
@@ -18,13 +45,11 @@ class Http {
         url: config.baseUrl + url,
         method: method,
         data: data,
+        header: {
+          "Authorization": `Bearer ${wx.getStorageSync('token')}`
+        },
         success: (res) => {
-          //只有2开头才是操作成功  小程序规定即使是404、500也会走success，除非网络错误
-          if (res.statusCode.toString().startsWith("2")) {
-            resolve(res)
-          } else {
-            Http._showError("资源找不到或者服务器异常");
-          }
+          resolve(res)
         },
         fail: (error) => {
           reject(error);

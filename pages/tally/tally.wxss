@@ -7,11 +7,13 @@ page {
   flex-direction: column;
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 88rpx;
+.tag {
+  height: 80rpx;
+  border-top-left-radius: 40rpx !important;
+  border-bottom-left-radius: 40rpx !important;
+  position: absolute;
+  right: 0;
+  margin-top: 20rpx;
 }
 
 .tab-content {
@@ -142,7 +144,7 @@ page {
   align-items: stretch;
   justify-content: space-between;
   margin-bottom: 12rpx;
-  
+
 }
 
 /* 底部按钮margin清0 */

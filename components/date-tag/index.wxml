@@ -1,4 +1,5 @@
-<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="2020-10" bindchange="bindDateChange">
-  <l-tag size="large" shape="circle" icon-color="#333333" plain="{{true}}" bg-color="#bfd9d3" font-color="#333333">
+<picker mode="date" fields="month" value="{{date}}" start="2015-09" end="{{maxDate}}" bindchange="bindDateChange">
+  <l-tag l-class="l-tag" size="large" shape="circle" icon-color="#333333" plain="{{true}}" bg-color="#bfd9d3"
+    font-color="#333333">
     {{showDate}}</l-tag>
 </picker>

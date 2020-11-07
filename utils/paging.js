@@ -2,9 +2,10 @@ const {
   Http
 } = require("./http");
 
+/**
+ * 封装分页
+ */
 class Paging {
-
-
   url
   start
   count
@@ -28,6 +29,7 @@ class Paging {
    * 加载数据
    */
   async getMoreData() {
+    //没有更多数据直接return
     if (!this.moreData) {
       return
     }
@@ -35,15 +37,16 @@ class Paging {
     if (!this._getLocker()) {
       return
     }
-    let data = await this.getRealData();
+    let data = await this._getRealData();
+    //释放送
     this._releaseLocker()
     return data;
   }
 
-  async getRealData() {
-    //url肯定不是固定的，因为start会变
-    //spu/latest?start=0&count=10
-    //当刷新时start进行累加，所以需要记录start
+  /**
+   * 获取真正数据的方法
+   */
+  async _getRealData() {
     let req = this._finallyReq();
     let data = await Http.request(req)
     if (data.total == 0) {
@@ -70,7 +73,8 @@ class Paging {
   /**
    * 对url进行拼接
    * 两种情况：
-   * url是否携带了其他参数
+   * url是否携带了其他参数 xxx?start=0&count=10
+   * 
    */
   _finallyReq() {
     let url = this.url;
@@ -105,6 +109,7 @@ class Paging {
 
 }
 
+//导出Paging对象
 export {
   Paging
 }

@@ -81,10 +81,12 @@ let income_grids = [{
   image: "/images/account/gift.png",
   text: "礼金"
 }, ];
-Page({
+var WxNotificationCenter = require('../../utils/wx-notify.js')
 
+Page({
   data: {
-    show_message: false, //显示消息提示
+    showDialog: false,
+    showTag: false,
     maxDate: new Date().getTime(), //最大日期
     minDate: new Date(2019, 10, 1).getTime(), //最小日期
     currentDate: new Date().getTime(), //当前日期
@@ -94,15 +96,43 @@ Page({
 
     selectedId: 1,
     bill: {
+      id: null,
       num: 0, //金额
       type: 0, //类型 0-支出  1-收入
       categoryId: 1, //分类id
       remark: '', //备注
       date: Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date()) //日期
     },
+    activeKey: 0,
+  },
 
-    a: 1,
-    b: 13
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let data = options.data;
+    if (data) {
+      data = JSON.parse(options.data);
+      //根据id查询账单 然后填充内容  并且有删除按钮
+      this.selectedId = data.categoryId
+      this.setData({
+        bill: {
+          id: data.id,
+          num: data.amount, //金额
+          type: data.type, //类型 0-支出  1-收入
+          categoryId: data.category_id, //分类id
+          remark: data.remark, //备注
+          date: Util.dateFormat("YYYY-mm-dd HH:MM:SS", new Date(data.record_time)) //日期
+        },
+        activeKey: data.type,
+        selectedId: data.category_id,
+        showDate: Util.dateFormat("mm-dd", new Date(data.record_time)),
+        showTag: true
+      })
+    }
+    this.setData({
+      currentDate: new Date().getTime()
+    })
   },
 
   /**
@@ -134,26 +164,10 @@ Page({
 
   //选择分类 
   onSelect(event) {
-    console.log(event.detail)
     this.setData({
       'bill.categoryId': event.detail,
       selectedId: event.detail
     })
-  },
-
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.setData({
-      currentDate: new Date().getTime()
-    })
-
-  },
-
-  onHide() {
-
   },
 
   /**
@@ -169,29 +183,25 @@ Page({
       return;
     }
     await BillModel.saveRecord({
+      "id": bill.id,
       "amount": bill.num,
       "type": bill.type,
       "category_id": bill.categoryId,
       "remark": bill.remark,
       "record_time": bill.date
     }).then(res => {
+      WxNotificationCenter.postNotificationName('NotificationName')
       wx.lin.showToast({
         title: '记账成功~奥利给!',
         icon: 'success'
       })
       setTimeout(() => {
         wx.navigateBack({
-          url: '/pages/home/home',
-          success: () => {
-            var page = getCurrentPages().pop();
-            if (page == undefined || page == null) return;
-            page.onLoad();
-          }
+          url: '/pages/home/home'
         })
       }, 600);
     });
   },
-
 
   /**
    * 点击键盘上的数字
@@ -223,6 +233,40 @@ Page({
     }
     this.setData({
       'bill.num': num == '0' ? key : num
+    })
+  },
+
+
+  /**
+   * 弹出删除框
+   */
+  onDelete() {
+    this.setData({
+      showDialog: true
+    })
+  },
+
+
+  /**
+   * 删除
+   */
+  async onConfirmDelete() {
+    await BillModel.remove(this.data.bill.id).then(res => {
+      WxNotificationCenter.postNotificationName('refresh') //发布消息 通知home和assay更新
+      wx.lin.showToast({
+        title: '删除成功~',
+        icon: 'success'
+      })
+      setTimeout(() => {
+        wx.navigateBack({
+          url: '/pages/home/home',
+          success: () => {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            page.onLoad();
+          }
+        })
+      }, 500);
     })
   },
 

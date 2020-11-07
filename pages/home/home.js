@@ -5,6 +5,12 @@ import {
 import {
   Util
 } from '../../utils/utils.js'
+
+import deviceUtil from "../../miniprogram_npm/lin-ui/utils/device-util"
+
+var WxNotificationCenter = require('../../utils/wx-notify.js')
+
+var app = getApp();
 Page({
 
   /**
@@ -15,17 +21,9 @@ Page({
     show_status_network: false,
     show_loading: true,
     loadingType: "loading",
-    loadingShow: true,
-    dataList: [],
-
+    loadingShow: false,
+    bills: [],
     date: Util.dateFormat("YYYY-mm", new Date()),
-    page: 0,
-    count: 10,
-
-    recordAmount: {
-      income: 0.00,
-      consume: 0.00
-    }
   },
 
   onGoTally() {
@@ -38,6 +36,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
+    this.initTop();
+    this.initBottom();
+    const capsuleBarHeight = deviceUtil.getTitleBarHeight()
+    console.log(capsuleBarHeight)
+    this.setData({
+      capsuleBarHeight
+    })
+    WxNotificationCenter.addNotification('refresh', this.didNotification, this)
+  },
+
+  //通知处理
+  didNotification: function () {
+    //更新数据
     this.initTop();
     this.initBottom();
   },
@@ -57,7 +68,6 @@ Page({
           show_status_network: true
         })
       }
-      console.log(this.data.show_status_network)
     }
   },
 
@@ -67,9 +77,19 @@ Page({
     if (!data) {
       return
     }
+    if (data.items.length == 0) {
+      this.setData({
+        show_status_page: true
+      })
+    } else {
+      this.setData({
+        show_status_page: false
+      })
+    }
     this.setData({
       billPaging,
       bills: data.items,
+      loadingType: "loading"
     })
   },
 
@@ -98,7 +118,7 @@ Page({
     let bills = this.data.bills;
     for (let i in items) {
       if (items[i].date == bills[bills.length - 1].date) {
-        dataList[dataList.length - 1].items = bills[bills.length - 1].items.concat(items[i].items)
+        bills[bills.length - 1].items = bills[bills.length - 1].items.concat(items[i].items)
       } else {
         bills.push(items[i])
       }
@@ -111,6 +131,10 @@ Page({
       date: event.detail
     })
     this.onLoad();
-  }
+  },
 
+  onRefresh() {
+    this.initTop();
+    this.initBottom();
+  },
 })

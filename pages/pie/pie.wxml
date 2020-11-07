@@ -1,5 +1,9 @@
+<l-status-show show="{{show_network_status}}" type="network" bind:lintap="onRefresh" describe="网络出现错误啦~">
+</l-status-show>
 
-<l-status-show show="{{show_status}}" type="network" bind:lintap="onRefresh"></l-status-show>
+
+<l-status-show show="{{show_data_status}}" type="data" describe="这个月没有账单哦，快去记一笔吧~"></l-status-show>
+
 
 <view class="container">
   <view class="pie-container">

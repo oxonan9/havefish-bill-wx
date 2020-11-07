@@ -1,0 +1,11 @@
+<view class="container">
+	<view class="image-container">
+		<image class="image" src="{{data.icon}}" bind:tap="onTap"></image>
+	</view>
+	<text class="title">{{data.name}}</text>
+	<view class="{{data.type==0?'amount-consume':'amount-income'}}">
+		<text>{{data.type==0?'-':'+'}}</text>
+		<text>{{data.amount}}</text>
+	</view>
+
+</view>

@@ -1,3 +1,5 @@
+@import '../../wxss//header-amount.wxss';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -11,84 +13,14 @@
   flex-direction: column;
   position: fixed;
   background-color: white;
+  z-index: 99;
 }
-
-.header-date {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  height: 88rpx;
-}
-
-
-.header-amount {
-  height: 240rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #bfd9d3;
-  border-radius: 10px;
-  margin: 10rpx 20rpx 20rpx 20rpx;
-  color: white;
-  position: relative;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  margin-left: 32rpx;
-}
-
-.consume-text {
-  font-size: 32rpx;
-  margin-top: 20rpx;
-}
-
-.consume-price {
-  margin-top: 16rpx;
-}
-
-
-.income-view {
-  margin-top: 28rpx;
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 20rpx;
-}
-
-.tip-text {
-  font-size: 28rpx;
-}
-
-.tip-price {
-  margin-left: 10rpx;
-}
-
-
-
-.right {
-  display: flex;
-  flex-direction: column;
-  margin-right: 100rpx;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-bottom: 20rpx;
-}
-
-.tip-text {
-  font-size: 28rpx;
-}
-
 
 .main {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 460rpx;
-  z-index: -1;
 }
 
 

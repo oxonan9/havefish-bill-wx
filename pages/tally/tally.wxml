@@ -1,26 +1,34 @@
 <l-message />
 <l-toast />
+<!--确认框 -->
+<l-dialog show="{{showDialog}}" type="confirm" title="提醒" content="确定删除吗" bind:linconfirm="onConfirmDelete"	/>
 
 <view class="wrapper">
-	<l-tabs l-class-header="tabs" animated-for-line bind:linchange="onChangeTab">
-		<l-tabpanel tab="支出" key="one" slot="one">
-			<view class="tab-content">
-				<category bind:select="onSelect" bind:post="getAmount" grids="{{consume_grids}}" selectedId="{{selectedId}}" />
-			</view>
-		</l-tabpanel>
-		<l-tabpanel tab="收入" key="two" slot="two">
-			<view class="tab-content">
-				<category bind:select="onSelect" bind:post="getAmount" grids="{{income_grids}}" selectedId="{{selectedId}}" />
-			</view>
-		</l-tabpanel>
-	</l-tabs>
+	<l-tag wx:if="{{showTag}}" l-class="tag" shape="square" bg-color="#8b0000" bind:lintap="onDelete">删除</l-tag>
+
+	<view class="header">
+		<l-tabs l-class-header="tabs" animated-for-line bind:linchange="onChangeTab" active-key="{{activeKey}}">
+			<l-tabpanel tab="支出" key="0" slot="0">
+				<view class="tab-content">
+					<category bind:select="onSelect" bind:post="getAmount" grids="{{consume_grids}}"
+						selectedId="{{selectedId}}" />
+				</view>
+			</l-tabpanel>
+			<l-tabpanel tab="收入" key="1" slot="1">
+				<view class="tab-content">
+					<category bind:select="onSelect" bind:post="getAmount" grids="{{income_grids}}" selectedId="{{selectedId}}" />
+				</view>
+			</l-tabpanel>
+		</l-tabs>
+	</view>
+
 
 	<!-- 自定义数字键盘 -->
 	<view class="keyboard">
 		<view class='keyboard-head'>
 			<text>备注：</text>
-			<l-input l-input-class="l-input-class" hide-label="{{true}}" class="remark" bind:linconfirm="onConfirmRemark"  bind:linblur="onConfirmRemark"
-				placeholder="写个备注..." showRow="{{false}}" />
+			<l-input l-input-class="l-input-class" hide-label="{{true}}" class="remark" bind:linconfirm="onConfirmRemark"
+				bind:linblur="onConfirmRemark" value="{{bill.remark}}" placeholder="写个备注..." showRow="{{false}}" />
 			<text class="amount">{{bill.num}}</text>
 		</view>
 

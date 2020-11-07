@@ -14,7 +14,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
   width: 400rpx;
   height: 90rpx;
   background-color: whitesmoke;
@@ -27,7 +26,7 @@
 }
 
 .tip-text {
-  color: #8cc7b5;
+  color: #157658;
   font-size: 32rpx;
   margin-left: 20rpx;
 }

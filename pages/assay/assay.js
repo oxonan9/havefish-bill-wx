@@ -8,7 +8,9 @@ import {
 } from '../../models/bill';
 import {
   Util
-} from '../../utils/utils';
+} from '../../utils/utils'
+import deviceUtil from "../../miniprogram_npm/lin-ui/utils/device-util"
+var WxNotificationCenter = require('../../utils/wx-notify.js')
 
 var chart = null
 
@@ -41,45 +43,49 @@ Page({
   },
 
   async onLoad() {
-    // let data = await Assay.assay2("2020-10", 0, 0)
     this._initAllData();
+    const titleBarHeight = deviceUtil.getTitleBarHeight()
+    this.setData({
+      titleBarHeight
+    })
+    WxNotificationCenter.addNotification('refresh', this.didNotification, this)
   },
 
+  //通知处理
+  didNotification: function () {
+    //更新数据
+    this._initAllData()
+  },
+
+
   async _initAllData() {
-    let billAmountData = await BillModel.getBillAmount(this.data.date);
+    let billAmount = await BillModel.getBillAmount(this.data.date);
     let lineData = await AssayModel.line(this.data.date);
     this.setData({
-      billAmountData
+      billAmount
     })
     this.initChart(lineData)
   },
 
   //向上取整十、整百
-  ceilNumber(value) {
-    if (value < 10) {
-      return 10
-    } else {
-      let num = Number(value.toString().substring(0, 1));
-      return (num + 1) * Math.pow(10, (value.toString().length - 1));
+  ceilNumber(number) {
+    var bite = 0;
+    if (number < 10) {
+      return 10;
     }
+    while (number >= 10) {
+      number /= 10;
+      bite += 1;
+    }
+    return Math.ceil(number) * Math.pow(10, bite);
   },
 
   /**
    * 初始化折线图
    */
   initChart(lineData) {
-    // let chartDataList = [];
-    // for (let i in data) {
-    //   let chartData = {};
-    //   chartData['value'] = data[i].amount;
-    //   chartData['name'] = `${data[i].name}:${data[i].amount}`;
-    //   chartDataList.push(chartData);
-    // }
-    // this.setData({
-    //   items: data,
-    // })
     var edata = [];
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= 31; i++) {
       if (i == 1 || i == 15 || i == 30) {
         edata.push(i)
       } else {
@@ -100,7 +106,7 @@ Page({
         containLabel: true
       },
       animation: true,
-      animationDuration: 1500, //动画时长
+      // animationDuration: 1500, //动画时长
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -155,7 +161,7 @@ Page({
     setTimeout(() => {
       chart.clear()
       chart.setOption(option);
-    }, 100)
+    }, 50)
   },
 
   onTap() {
@@ -173,13 +179,22 @@ Page({
 
   onGoPie() {
     wx.navigateTo({
-      url: '/pages/pie/pie'
+      url: '/pages/pie/pie?date=' + this.data.date
     })
   },
 
   onGoAssayBudget() {
     wx.navigateTo({
       url: '/pages/assay-budget/assay-budget?date=' + this.data.date,
+    })
+  },
+
+
+  onGoTarget() {
+    wx.lin.showToast({
+      title: '正在开发中～快了快了！',
+      icon: 'loading',
+      duration: 1000
     })
   }
 })

@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "record-item": "/components/record-item/index"
+    "bill-item": "/components/bill-item/index"
   }
 }

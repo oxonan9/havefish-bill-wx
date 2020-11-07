@@ -1,32 +1,30 @@
+<l-toast />
 <view class="wrapper">
   <v-nav />
   <view class='header'>
-    <view class="header-image">
-      <view class="header-date">
-        <date-tag bind:datechange="onDateChange" />
-      </view>
+    <view class="header-date" style="height:{{titleBarHeight}}rpx">
+      <date-tag bind:datechange="onDateChange" />
     </view>
     <view class="header-amount">
       <view class="left">
-        <text class="tip-text1">当月支出</text>
-        <view class="left-tip1">
-          <text class="">¥</text>
-          <text class="tip-consume">{{billAmountData.consume}}</text>
-        </view>
-        <view class="left-tip2">
+        <text class="consume-text">当月支出</text>
+        <l-price class="consume-price" value="{{billAmount.consume}}" color="#fff" unit-size="32" value-size="48"
+          autofix />
+        <view class="income-view">
           <text class="tip-text">当月收入</text>
-          <text class="tip-income">{{billAmountData.income}}</text>
+          <l-price class="tip-price" unit-size="24" value="{{billAmount.income}}" color="#fff" autofix />
         </view>
+
       </view>
 
       <view class="right">
         <view>
           <text class="tip-text">平均支出</text>
-          <text class="tip-income">{{billAmountData.average}}</text>
+          <l-price class="tip-price" unit-size="24" value="{{billAmount.average}}" color="#fff" autofix />
         </view>
         <view>
           <text class="tip-text">当月结余</text>
-          <text class="tip-income">{{billAmountData.balance}}</text>
+          <l-price class="tip-price" unit-size="24" value="{{billAmount.balance}}" color="#fff" autofix />
         </view>
       </view>
 
@@ -34,25 +32,7 @@
   </view>
   <view class="main">
     <text class="title">收支走势</text>
-
-
     <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
-
-    <!-- <block wx:for="{{items}}">
-      <view class="category-item">
-        <view class="grid-item">
-          <image src="{{item.icon}}"></image>
-        </view>
-        <view class="middle">
-          <text class="name">{{item.name}}</text>
-          <l-progress l-class="progress" percent="{{item.percent}}"></l-progress>
-        </view>
-        <view class="number">
-          <text class="amount">{{item.amount}}</text>
-          <text class="percent">{{item.percent}}%</text>
-        </view>
-      </view>
-    </block> -->
   </view>
   <scroll-view scroll-x>
     <view class="footer">
@@ -66,9 +46,9 @@
         <image class="footer-two-image" src="/images/progress@pie.png"></image>
       </view>
 
-      <view class="footer-v footer-three-bg" bind:tap="onGoPie">
+      <view class="footer-v footer-three-bg" bind:tap="onGoTarget">
         <text class="footer-text">存钱进度</text>
-        <image class="footer-two-image" src="/images/progress@pie.png"></image>
+        <image class="footer-two-image" src="/images/target.png"></image>
       </view>
     </view>
   </scroll-view>

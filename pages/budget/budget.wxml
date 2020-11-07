@@ -5,7 +5,7 @@
 
   <view class="input-view">
     <l-input l-class="l-input" l-input-class="" hide-label="{{true}}" class="remark" bind:linconfirm="onConfirmRemark"
-      bind:linblur="onConfirmRemark" focus="{{true}}" type="number" showRow="{{false}}" maxlength="8" />
+      bind:linblur="onConfirmRemark" bind:lininput="onConfirmRemark" focus="{{true}}" type="number" showRow="{{false}}" maxlength="8" value="{{amount}}"/>
   </view>
 
   <l-button class="btn" type="default" shape="semicircle" width="250" height="80" bind:lintap="onSave">设置预算</l-button>

@@ -24,6 +24,7 @@ class AssayModel {
       }
     })
   }
+
 }
 
 export {

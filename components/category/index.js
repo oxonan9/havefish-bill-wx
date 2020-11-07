@@ -24,24 +24,6 @@ Component({
         selectedId: event.currentTarget.dataset.id
       })
       this.triggerEvent('select', this.data.selectedId, {})
-    },
-
-    onPost(event) {
-      this.triggerEvent("post", event.detail.value, {})
     }
   },
-  attached() {
-    console.log(this.data.selectedId)
-    // this.setData({
-    //   selectedId: this.data.grids[0].id
-    // })
-  },
-
-  moved() {
-    console.log("moved")
-  },
-
-  detached() {
-    console.log("detached")
-  }
 })

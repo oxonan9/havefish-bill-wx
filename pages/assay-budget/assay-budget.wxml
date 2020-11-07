@@ -1,5 +1,5 @@
 <view class="container">
-  <text class="number-text">{{11353}}/{{20000}}</text>
-  <l-progress l-class="l-progress-class" percent="50" stroke-width="60" border-radius="30" show-info="{{true}}" active="{{true}}" duration="10">
+  <text class="number-text">{{data.current}}/{{data.budget}}</text>
+  <l-progress l-class="l-progress-class" percent="{{data.percent}}" stroke-width="60" border-radius="30" show-info="{{true}}" active="{{true}}" duration="10">
   </l-progress>
 </view>

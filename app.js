@@ -1,7 +1,12 @@
+const {
+  Token
+} = require("./models/token")
+
 App({
 
   globalData: {
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'], // 获取导航栏的高度
+    statusBarHeight: wx.getSystemInfoSync()['navBarHeight'], // 获取导航栏的高度
   },
 
   onLaunch() {
@@ -14,6 +19,9 @@ App({
         this.globalData.screenHeight = res.screenHeight
       },
     })
+
+    let token = new Token();
+    token.verify();
   }
 
 })

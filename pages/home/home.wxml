@@ -1,18 +1,19 @@
 <l-message />
 <!-- full-screen:全屏 -->
 <l-loading full-screen="{{true}}" show="{{show_loading}}" type="flash"></l-loading>
-<l-status-show l-class="l-status-class" full-screen type="data" show="{{bills.length==0}}" describe="这个月您没有记账哦~">
+<l-status-show l-class="l-status-class" full-screen type="data" show="{{show_status_page}}" describe="这个月您没有记账哦~">
 </l-status-show>
 
-<l-status-show l-class="l-status-class" full-screen type="network" show="{{show_status_network}}" describe="网络出现错误啦~">
+<l-status-show l-class="l-status-class" full-screen type="network" show="{{show_status_network}}"
+	bind:lintap="onRefresh" describe="网络出现错误啦~">
 </l-status-show>
 
-<l-loadmore show="{{bills.length>0}}" type="{{loadingType}}">
+<l-loadmore show="{{loadingShow}}" type="{{loadingType}}">
 
 	<view slot="content" class='container' type="{{loadingType}}">
 		<view class='header'>
 			<v-nav />
-			<view class="header-date">
+			<view class="header-date" style="height:{{capsuleBarHeight}}rpx">
 				<date-tag bind:datechange="onDateChange" />
 			</view>
 
@@ -41,11 +42,12 @@
 
 			</view>
 		</view>
-
 		<view class="main">
-			<record wx:for="{{bills}}" wx:key="index" data="{{item}}" />
+			<block wx:for="{{bills}}" wx:key="*this">
+				<v-bill data="{{item}}" />
+			</block>
 		</view>
 
-		<image class="add-image" src="/images/edit.png" bindtap="onGoTally"></image>
+		<image class="add-image" src="/images/add.png" bindtap="onGoTally"></image>
 	</view>
 </l-loadmore>

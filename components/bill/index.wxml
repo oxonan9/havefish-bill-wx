@@ -1,0 +1,12 @@
+<view class="container">
+	<view class="header">
+		<text class="date">{{data.date}}</text>
+		<text>支出：{{data.consume}}，收入：{{data.income}}</text>
+	</view>
+
+	<block wx:for="{{data.items}}" wx:key="*this">
+		<view class="item-container" data-item="{{item}}" bind:tap="onTap">
+			<bill-item data="{{item}}" />
+		</view>
+	</block>
+</view>
