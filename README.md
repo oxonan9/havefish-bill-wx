@@ -1,3 +1,6 @@
+
+![](https://tva1.sinaimg.cn/large/0081Kckwly1gm792f5juaj31hc0u0wfk.jpg)
+
 # havefish-bill
 《有鱼账本》一款记账微信小程序，支持快速记账，查看任意时间账单、统计图、账单导出、预算设置等功能，可以直接扫码体验
 
@@ -13,5 +16,4 @@ Lin UI是一款非常优秀的小程序组件库，它支持button、avatar、di
 
 
 ### 产品展示
-![](https://tva1.sinaimg.cn/large/0081Kckwly1gm792f5juaj31hc0u0wfk.jpg)
 
