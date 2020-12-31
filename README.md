@@ -19,3 +19,5 @@ Lin UI是一款非常优秀的小程序组件库，它支持button、avatar、di
 
 [![ByDhuT.png](https://s1.ax1x.com/2020/11/03/ByDhuT.png)](https://imgchr.com/i/ByDhuT)
 
+![](https://tva1.sinaimg.cn/large/0081Kckwly1gm792f5juaj31hc0u0wfk.jpg)
+
