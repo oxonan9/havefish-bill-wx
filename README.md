@@ -7,8 +7,8 @@
 ### 使用技术
 《有鱼账本》由自己独立设计以及完成前后端开发：
 * 设计使用[墨刀](https://modao.cc/)
-* 前端使用原生小程序以及[Lin UI](https://doc.mini.talelin.com/)组件库开发
 * 后端使用SpringBoot、JPA开发
+* 前端使用原生小程序以及[Lin UI](https://doc.mini.talelin.com/)组件库开发
 
 ### 产品展示
 
