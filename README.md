@@ -1,4 +1,4 @@
-![](https://tva1.sinaimg.cn/large/008eGmZEly1gminsjmmutj30by0bywes.jpg)
+<img width="200" height="200" src="https://tva1.sinaimg.cn/large/008eGmZEly1gminsjmmutj30by0bywes.jpg"/>
 
 ## 使用技术
 
@@ -18,7 +18,7 @@
 - [x] 无感知登录、二次重发
 - [ ] 存一笔钱
 
-## 一些笔记
+## 笔记
 
 - [ES6新特性语法](https://www.notion.so/ES6-6252b4b2481947e08dad04b2843a4749)
 - [Flex布局语法](https://www.notion.so/Flex-172b26397f3a4e338b8745cffe2f979a)
