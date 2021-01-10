@@ -1,13 +1,6 @@
 <div align="center"><img width="200" height="200" src="https://tva1.sinaimg.cn/large/008eGmZEly1gminsjmmutj30by0bywes.jpg"/>
-  <h1> havefish-bill-wx </h1>
+  <h1> 有鱼账本 </h1>
 </div>
-
-### 使用技术
-
-- 设计使用[墨刀](https://modao.cc/)
-- 后端使用SpringBoot、JPA、Redis、MySQL开发
-- 前端使用原生小程序自定义组件以及[Lin UI](https://doc.mini.talelin.com/)组件库开发
-
 ## 功能
 
 - [x] 快速记账
