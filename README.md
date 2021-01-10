@@ -31,7 +31,7 @@
 
 ## 使用技术
 
-- 使用[墨刀]完成产品UI设计(https://modao.cc/)
+- 使用[墨刀](https://modao.cc/)完成产品UI设计
 - 后端使用SpringBoot、JPA、Redis、MySQL开发
 - 前端使用原生小程序以及[Lin UI](https://doc.mini.talelin.com/)组件库开发
 
