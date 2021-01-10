@@ -1,0 +1,31 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/hvfish_bill?useSSL=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: admin
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE #序列化字段为下划线形式
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true #时间序列化为时间戳毫秒形式
+
+wx:
+  appid:  #小程序appid
+  secret: #小程序secret
+  code2SessionUrl: https://api.weixin.qq.com/sns/jscode2session?appid={0}&secret={1}&js_code={2}&grant_type=authorization_code
+
+jwt:
+  secret: hvfish7777777
+  expires: 7200
