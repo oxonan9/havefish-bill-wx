@@ -2,14 +2,6 @@
   <h1> havefish-bill-wx </h1>
 </div>
 
-### 使用技术
-
-《有鱼账本》由自己独立设计以及完成前后端开发：
-
-- 设计使用[墨刀](https://modao.cc/)
-- 后端使用SpringBoot、JPA开发
-- 前端使用原生小程序以及[Lin UI](https://doc.mini.talelin.com/)组件库开发
-
 ### 功能
 
 - [x] 快速记账
@@ -19,6 +11,26 @@
 - [x] 账单导出
 - [x] 无感知登录、二次重发
 - [ ] 存一笔钱
+
+### 启动项目
+
+```
+git clone git@github.com:opisir/havefish-bill-wx.git
+
+cd havefish-bill-wx
+
+npm install lin-ui
+
+微信开发者工具->工具->构建npm
+```
+
+### 使用技术
+
+《有鱼账本》由自己独立设计以及完成前后端开发：
+
+- 设计使用[墨刀](https://modao.cc/)
+- 后端使用SpringBoot、JPA开发
+- 前端使用原生小程序以及[Lin UI](https://doc.mini.talelin.com/)组件库开发
 
 ### 笔记
 
