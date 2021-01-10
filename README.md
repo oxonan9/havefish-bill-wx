@@ -1,14 +1,6 @@
 <div align="center"><img width="200" height="200" src="https://tva1.sinaimg.cn/large/008eGmZEly1gminsjmmutj30by0bywes.jpg"/>
   <h1> 有鱼账本 </h1>
 </div>
-## 功能
-
-- [x] 快速记账
-- [x] 日期统计
-- [x] 图标统计
-- [x] 预算设置
-- [x] 无感知登录、二次重发
-- [ ] 存一笔钱
 
 ## 启动项目
 
@@ -27,6 +19,15 @@
 2.修改api模块application.yml的数据库配置以及wx配置
 3.启动Application
 ```
+
+## 功能
+
+- [x] 快速记账
+- [x] 日期统计
+- [x] 图标统计
+- [x] 预算设置
+- [x] 无感知登录、二次重发
+- [ ] 存一笔钱
 
 ## 使用技术
 
